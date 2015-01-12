@@ -1,0 +1,141 @@
+<script type="text/javascript">
+//
+//    $(".scrolles").jscroll({
+//        autoTrigger: false
+//    });
+//    var html = $(".scrolles")[0].outerHTML;
+//    var htmlParent = $(".scrolles").parent();
+    var top = $(document).height();
+    $('#footer-not').css({
+        "top": $(document).height() + "px;"
+    });
+
+
+
+    jQuery.expr[':'].contains = function(a, i, m) {
+        return jQuery(a).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+    };
+
+
+
+    function filterChange(filtername)
+    {
+
+        $("#" + filtername + "-filter").click(function()
+        {
+            if ($(this).hasClass("fa-minus"))
+            {
+                $(this).removeClass("fa-minus").addClass("fa-plus");
+                $("#" + filtername).addClass("hide");
+            }
+            else
+            {
+                $(this).removeClass("fa-plus").addClass("fa-minus");
+                $("#" + filtername).removeClass("hide");
+            }
+        });
+
+
+        $('#' + filtername + '-search').keyup(function()
+        {
+            if ($(this).val())
+            {
+                $("." + filtername + "-li").hide();
+                $("." + filtername + "-li").filter(':contains("' + $(this).val() + '")').show();
+            }
+            else
+            {
+                $("." + filtername + "-li").show();
+            }
+        });
+    }
+
+    filterChange("venues");
+    var url = '<?php echo $this->url('subdomain', array('subdomain' => $city->get_link_dash())); ?>';
+    var params = "?ajax=1";
+
+    $('#button_more').click(function()
+    {
+        params = "?ajax=1&offset=" + $(this).attr('href').match(/(\d+)/i)[1];
+        
+
+        $.ajax({
+            url: url + params
+        })
+                .done(function(data) {
+                    $('.table-listing tbody').append($('tbody', data).children());
+                    href=$(data).last().attr('href');
+                    console.log(href);
+                    $('#button_more').attr('href',href);
+                    if(href==undefined)
+                        $('#button_more').hide();
+
+                    if (($('#table-listing tr.filtertag').length >= 5)) {
+                        $('#footer-not').css('padding-top', '0px');
+                    } else if ($('#table-listing tr.filtertag').length === 2) {
+                        $('#footer-not').css('padding-top', '290px');
+                    } else if ($('#table-listing tr.filtertag').length === 1) {
+                        $('#footer-not').css('padding-top', '390px');
+                    } else if ($('#table-listing tr.filtertag').length === 3) {
+                        $('#footer-not').css('padding-top', '220px');
+                    } else if ($('#table-listing tr.filtertag').length === 4) {
+                        $('#footer-not').css('padding-top', '120px');
+                    }
+                });
+
+    });
+
+    $('#venues').on("change", function(e)
+    {
+        params = "?ajax=1";
+        var checked = [];
+        $('#venues input:checked').each(function() {
+            checked.push($(this).val());
+        });
+
+        if (checked.length === 0)
+        {
+            params += "&offset=0";
+            $('#button_more').show();
+        }
+        else
+        {
+            params += "&venue=" + checked.toString();
+            $('#button_more').hide();
+        }
+        console.log(url + params);
+        $.ajax({
+            url: url + params
+        })
+                .done(function(data) {
+
+
+                    $('.table-listing tbody').html('');
+
+                    $('.table-listing tbody').append($('tbody', data).children());
+
+
+                    if (($('#table-listing tr.filtertag').length >= 5)) {
+                        $('#footer-not').css('padding-top', '0px');
+                    } else if ($('#table-listing tr.filtertag').length === 2) {
+                        $('#footer-not').css('padding-top', '290px');
+                    } else if ($('#table-listing tr.filtertag').length === 1) {
+                        $('#footer-not').css('padding-top', '390px');
+                    } else if ($('#table-listing tr.filtertag').length === 3) {
+                        $('#footer-not').css('padding-top', '220px');
+                    } else if ($('#table-listing tr.filtertag').length === 4) {
+                        $('#footer-not').css('padding-top', '120px');
+
+                    }
+                    else
+                    {
+                        $.each(checked, function(index, value)
+                        {
+                            $('#table-listing tr').filter('[data-venue=' + value + ']').show();
+                        });
+                    }
+                });
+
+    });
+
+</script>

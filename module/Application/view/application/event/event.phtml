@@ -1,0 +1,51 @@
+<?php
+if ($ajax === 1) {
+    echo $this->partial('layout/performer_events.phtml', array('events' => $events, 'performer' => $performer, 'offset' => $offset, 'eventsCount' => $eventsCount, 'ajax' => $ajax,'countE'=> $countE));
+    exit;
+}
+?>
+
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <?php echo $this->partial('layout/head.phtml', array('performer' => $performer, 'events' => $events, 'cityEvent' => $CityID, 'MetaEvent' => $MetaEvent,'OGmetas'=>$OGmetas)); ?>
+    <body>
+        <?php echo $this->partial('layout/header.phtml', array()); ?>
+        <div class="container">
+            <section id="event-concertq-container" class="event-concertq-container">
+
+                <?php echo $this->partial('layout/performer_info.phtml', array('performer' => $performer, 'eventsCount' => $eventsCount, 'events' => $events, 'cityEvent' => $CityID)); ?>
+
+                <section id="performer-events" class="performer-events c-wrapper">
+                    <aside id="filter-performer-events" class="filter-performer-events">
+                        <?php echo $this->partial('layout/performer_city_filter.phtml', array('cities' => $allEvents)); ?>
+
+                        <?php echo $this->partial('layout/venue_filter.phtml', array('venues' => $allEvents)); ?>
+
+                        <?php echo $this->partial('layout/related_performers.phtml', array('relatedPerformers' => $relatedPerformers)); ?>
+
+
+                    </aside>
+                    <div id="performer-events-listing" class="performer-events-listing">
+                        <?php echo $this->partial('layout/performer_events.phtml', array('events' => $events, 'performer' => $performer, 'offset' => $offset, 'eventsCount' => $eventsCount, 'ajax' => $ajax,'countE'=> $countE)); ?>
+
+                    </div>
+                    <?php echo $this->partial('layout/performer_content.phtml'); ?>            
+
+
+
+                </section>
+            </section>
+            
+            <?php echo $this->partial('layout/footer.phtml'); ?>
+            <?php echo $this->partial('layout/partialJS.phtml', array('performer' => $performer)); ?>
+              <?php echo $this->partial('layout/partialjs'); ?> 
+              <?php echo $this->partial('layout/totopJs.phtml'); ?> 
+          
+        </div> <!-- /container -->
+        <?php echo $this->inlineScript() ?>
+    </body>
+</html>
+
+
+

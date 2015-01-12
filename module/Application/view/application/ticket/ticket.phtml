@@ -1,0 +1,250 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+
+    <?php echo $this->partial('layout/head.phtml', array('MetaEvent' => $metas, 'OGmetas' => $OGmetas)); ?>
+    <body>
+        <?php echo $this->partial('layout/header.phtml', array()); ?>
+
+        <?php //echo $this->partial('layout/ticketconcertcontainer');  ?>
+
+
+        <div id="loading_tickets" style="width:100%;"><img src="<?php echo $this->basePath(); ?>/img/concertq-loading.gif"></div>
+
+
+        <div id="tickets-container" style="width:100%;display:none;">
+            <div class="ticketsanaheim_box_ticket">
+                <div class="ticketsanaheim_bar_ticket">
+                    <span class="ticketsanaheim_breadcrumbs"><a title="<?php echo $this->escapeHtml($event->get_name()); ?>" href="<?php echo $this->url('subdomain', array('subdomain' => $performerdash)); ?>"><?php echo $this->escapeHtml($event->get_name()); ?> Concert Q</a> &gt; <strong><?php echo $this->escapeHtml($event->get_name()); ?> <?php echo $event->get_date()->format("l"); ?>, <?php echo $event->get_date()->format("F d"); ?>, <?php echo $event->get_date()->format("Y"); ?> Tickets</strong></span><br><br>
+                    <header class="clearfix">
+                        <?php echo $this->partial('layout/ticketconcertcontainer'); ?></header>
+                    <br>
+                    <p><?php ?> </p>
+<!--                    <p>You can buy Paul Cary (formerly Arrowhead Pond) Paul cary tickets here for the Anaheim concert on Wednesday, July 9th 2014. We have Cher Honda Center (formerly Arrowhead Pond) concert tickets right here.</p>-->
+                </div>
+
+                <div class="ticketsanaheim_line-up right" style="padding-top:15px">
+                    <a title="100% Guarantee" href="<?php echo $this->url('www/about', array()); ?>"><img width="306" height="87" align="right" style="margin-right:40px" src="<?php echo $this->basePath(); ?>/img/guarantee.jpg"></a>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div id="ticket-concertq-container" class="ticket-concertq-container" >
+
+
+
+                <div id="map-container" class="map-container" align="center">
+                    <div id="the-map" class="the-map">
+                        <?php echo $this->partial('layout/ticketmap'); ?>
+                    </div>
+                </div>
+            </div>
+
+            <div id="concertq-listing-container" class="concertq-listing-container">
+                <?php echo $this->partial('layout/listingbrokerstickets'); ?>
+            </div>
+            <div class="clear"></div>
+            <div class="ticketsanaheim_box_cit_bot_map">
+                <h4><center><?php echo strtoupper($htagsticket['Htag2']); ?></center></h4>
+                <div class="ticketsanaheim_venue_map">  <a href="<?php echo $big_map_url; ?>" target="_blank"><center><img width="80%" border="0" src="<?php echo $image_url; ?>" alt="<?php echo $event->getVenue()->get_name(); ?>" /></center></a>
+                    <span><strong><?php echo $address; ?></strong></span>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="ticketsanaheim_footer">
+
+                <h3><?php echo strtoupper($htagsticket['Htag3']); ?></h3>
+                <!--<p></p>-->
+                <div align="left" class="ticketsanaheim_box_cit_bot">
+                    <h4 class="title_event"><?php
+                    
+                    echo $htagsticket['Htag1_html'];
+                    ?></h4>
+                    <?php foreach ($nextevents as $nextevent) : ?>
+
+                        <ul>
+                            <a href="<?php
+                            $cityConcat = preg_replace_callback(
+                                    '/-([a-z])/', function ($matches) {
+                                return $matches[1];
+                            }, $event->getVenue()->getCity()->get_link_dash()
+                            );
+                            echo $this->url('subdomain/ticketPage', array(
+                                'action' => 'ticket',
+                                'subdomain' => $nextevent->getHost()->get_link_dash(),
+                                'city' => $cityConcat,
+                                'venue' => $nextevent->getVenue()->get_link_dash()));
+                            ?>"> <li><strong> <?php echo $nextevent->get_date()->format('m-d-Y'); ?> :</strong>
+
+                                    <b class="ticketsanaheim_mov"><?php echo $nextevent->get_name(); ?></b> 
+                                    <?php echo $nextevent->getVenue()->get_name(); ?> 
+
+                                    <em><?php echo $nextevent->getVenue()->getCity()->get_name(); ?> </em>
+                                    <?php echo $nextevent->getVenue()->getCity()->getState()->get_abbreviation(); ?></li> </a></br>
+                        </ul>
+
+
+                    <?php endforeach; ?>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
+        <script src="<?php echo $this->basePath(); ?>/js/nouislider.min.js" type="text/javascript"></script>
+        <script src="<?php echo $this->basePath(); ?>/js/debouncedresize.js" type="text/javascript"></script>
+        <script src="<?php echo $this->basePath(); ?>/js/jscrollpane.min.js" type="text/javascript"></script>
+        <script src="<?php echo $this->basePath(); ?>/js/concertq.js" type="text/javascript"></script>
+
+        <!-- Load jqueryUI code and css from their own site or available at maps.seatics.com/ssc_jquery-ui_tn.js and .../ssc_jquery-ui_beta_tn.css -->
+        <script type="text/javascript" src="<?php echo $this->basePath(); ?>/js/jquery-ui.js"></script>
+        <!-- Load the beta version of the maps maincontrol module at maps.seatics.com/maincontrol_beta_tn.js. If it detects the first three above are not present, maincontrol will attempt to load versions of them. This could result in slower page loading and odd formatting issues.-->
+        <script type="text/javascript" src="http://maps.seatics.com/maincontrol_0103_tn.js"></script>
+        <!-- flashmap swfObject : imported from ticketnetwork site -->
+        <script type="text/javascript" src="<?php echo $this->basePath(); ?>/js/flashmap-swfobject.js"></script>
+
+        <!-- Load a new CSS from their own site created by merging their existing maps CSS with new/changed elements in the pattern css file at maps.seatics.com/ssc_venueMapStylesSample_beta_tn.css-->
+        <link href="<?php echo $this->basePath(); ?>/css/ssc_venueMapStylesSample_tn.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->basePath(); ?>/css/concertq-ticket-results-layout-min.css" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->basePath(); ?>/css/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript">
+            function makeGuid() {
+                var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
+                var guid_length = 5;
+                var guid = '';
+                for (var i = 0; i < guid_length; i++) {
+                    var rnum = Math.floor(Math.random() * chars.length);
+                    guid += chars.substring(rnum, rnum + 1);
+                }
+                return guid;
+            }
+        </script>
+        <?php // DEBUT MAP INTERACTIVE     ?>
+        <script type="text/javascript">
+
+
+
+
+            function setTixDivs(ticGrps) {
+                var webParms = {
+                    swfMapURL: '<?php
+        if ($event->getMap()) {
+            echo $event->getMap()->getMapInteractiveUrl();
+        } else {
+            echo 'http://seatics.tickettransaction.com/novenuemap_tn.jpg';
+        }
+        ?>',
+                    staticMapURL: '<?php
+        if ($event->getMap()) {
+            $staticMapUrl = $event->getMap()->getMapUrl();
+        } else {
+            echo $staticMapUrl = '';
+        }
+
+
+        if ($staticMapUrl == '' || $staticMapUrl == 'http://seatics.tickettransaction.com/')
+            echo 'http://seatics.tickettransaction.com/novenuemap_tn.jpg';
+        else
+            echo $staticMapUrl;
+        ?>',
+                    mapShellURL: 'http://maps.seatics.com/MapShell_0102_tn.swf',
+                    sectionHiliteColor: 'bbbbbb',
+                    sectionSelectColor: 'f92603',
+                    sectionInListColor: 'fa9007',
+                    sectionNotInListColor: '14b9ef',
+                    sectionNoSeatsColor: '999999',
+                    showTGsInNotSelectedSections: false,
+                    showTGsNotOnMap: 'merged',
+                    swfWidth: '500',
+                    sortArrows: ['<img src="<?php echo $this->basePath(); ?>/img/concertq-down.gif" />', '', '<img src="<?php echo $this->basePath(); ?>/img/concertq-up.gif" />']
+                };
+
+                var cookie_tn_ppc_src = '';
+                var tn_cookies = '; ' + document.cookie + ';';
+                var cookie_ppc_src_start = tn_cookies.indexOf('; tn_ppc_src=') + 13;
+                if (cookie_ppc_src_start != 12)
+                    cookie_tn_ppc_src = '&ppcsrc=' + tn_cookies.substring(cookie_ppc_src_start, tn_cookies.indexOf(';', cookie_ppc_src_start));
+                var acct_start = tn_cookies.indexOf('; rcaid=') + 8;
+                if (acct_start != 7)
+                    cookie_tn_ppc_src += '&rcaid=' + tn_cookies.substring(acct_start, tn_cookies.indexOf(';', acct_start));
+
+                ssc.EH.buyTickets = function(buyObj) {
+                    _bShowCoupon = false;
+                    var purchaseUrl = 'https://tickettransaction2.com/Checkout.aspx?' + buyObj.tgSds + cookie_tn_ppc_src + '&treq=' + buyObj.buyQty + '&ppcsrc=concertq&SessionId=SHP' + makeGuid();
+
+                    try {
+                        purchaseUrl = AppendToPurchaseUrl(purchaseUrl);
+                    }
+                    catch (e) {
+                    }
+
+                    var popup = false;
+                    try {
+                        popup = PopupCheckOut();
+                    }
+                    catch (e) {
+                    }
+
+                    if (popup)
+                        window.open(purchaseUrl, '_blank', 'location=no,scrollbars=yes,resizable=yes,menubar=yes,toolbar=yes');
+                    else
+                        location.href = purchaseUrl;
+                }
+
+                ssc.loadTgList(ticGrps, webParms);
+                ssc.sortTgList('price', 'asc'); // sort the list (before it's displayed!) in order of increasing price
+                ticGrps = ''; // clear out variable
+            }
+
+            /*Lancement de la rÃ©cupÃ©ration des tickets par ajax*/
+            function refreshtickets(eventid)
+            {
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo str_replace('http://', 'http://', $this->url('subdomain/ajaxTicketsPage', array('action' => 'tickets', 'subdomain' => $performerdash))); ?>',
+                    data: {"event_id": eventid},
+                    success: function(msg) {
+                        if (msg) {
+                            var pos = msg.indexOf("><$>");
+                            if (pos === -1) {
+                                /*no tickets*/
+                                setTixDivs("><$>");
+                                $("#loading_tickets").hide();
+                                $("#tickets-container").hide();
+                                $('#tickets-container').before('<div id="no-tickets-container" style="width:100%;display:block;">No tickets!</div>');
+                            } else {
+                                /*listing*/
+                                setTixDivs($.trim(msg));
+                                $("#loading_tickets").hide();
+                                $("#tickets-container").show();
+                            }
+                        }
+
+
+                    }
+                });
+            }
+
+            refreshtickets("<?php echo $event->get_id(); ?>");
+
+
+            $(".eventselect").change(function() {
+                var eventid = $(this).children(":selected").attr("value");
+                if (!(eventid === 'default'))
+                {
+                    $("p.eventtime").html($(this).children(":selected").text());
+                    window.location.replace("<?php echo $link = $this->url('subdomain/ticketPage', array('action' => 'ticket', 'city' => $cityConcat, 'venue' => $venuedash, 'subdomain' => $performerdash)); ?>" + "?eventid=" + eventid);
+
+
+
+                }
+
+            });
+
+        </script>
+        <?php echo $this->partial('layout/footer.phtml'); ?>
+        <?php echo $this->partial('layout/totopJs.phtml'); ?> 
+    </body>
+</html>

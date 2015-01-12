@@ -1,0 +1,28 @@
+<section id='footer-not'>
+
+
+    <div class="performer-information-footer" >
+
+        
+            <h2 class="performe_title"><?php echo $performer->get_name(); ?> concert <?php echo date('Y'); ?></h2>
+
+            <?php
+            try {
+                $content = $this->generateContent($performer->get_link_dash());
+                if (array_key_exists($performer->get_link_dash(), Application\Plugins\RealContent::$performerContent)) {
+                    echo Application\Plugins\RealContent::$performerContent[$performer->get_link_dash()];
+                }
+                echo $content;
+            } catch (\Exception $ex) {
+                $events->rewind();
+                echo $this->partial('layout/performer_generatedContent.phtml', array(
+                    'file' => $ex->getMessage(),
+                    'performer' => $performer,
+                    'event' => $events->current(),
+                    'allEvents' => $allEvents,
+                    'relatedPerformers' => $relatedPerformers));
+            }
+            ?>
+     
+    </div>
+</section>

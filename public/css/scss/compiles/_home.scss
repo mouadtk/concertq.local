@@ -1,0 +1,185 @@
+.nv-scroll {
+	display: none;
+}
+
+.home-concertq-container {
+	margin: 2em;
+}
+
+
+
+/** PERFORMER LISTING **/
+
+	.filters-home-events {
+		position: relative;
+		padding: 1em 0;
+		border-bottom: 1px solid #ccc;
+		margin: 0 0 2em;
+
+		h4 {
+			float: left;
+			color: $grey;
+			font: 400 pxem(20px) $web-font;
+			text-transform: uppercase;
+			width: 80px;
+		}
+	}
+
+	.events-tooltip {
+		display: none;
+	}
+
+	.filter-home {
+		float: left;
+		margin-left: 20px;
+		display: inline-block;
+		position: relative;
+
+		> a {
+			color: $black;
+			font: 400 pxem(20px) $web-font;
+
+			> i {
+				line-height: 29px;
+				margin-left: 12px;
+			}
+
+			&:hover {
+				color: $color;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.performers-listing {
+		padding: 0 0 4em;
+	}
+
+	.performer-box {
+		background-color: #fff;
+		margin: 0 10px 20px;
+		float: left;
+		width: 225px;
+		@include shadow(0 0 0 rgba(0,0,0,0));
+		@include radius(0 0 3px 3px);
+		@include transition(box-shadow .3s ease,top .2s ease);
+
+		&:hover {
+			@include shadow(0 0 12px rgba(0,0,0,0.2));
+		}
+
+		header {
+			> a {
+				display: block;
+				position: relative;
+
+				> i {
+					@include absolute(20px,null,null,-15px,1);
+					color: $w;
+					font-size: 34px;
+				}
+
+				> img {
+					@include radius(3px 3px 0 0);
+					max-width: 225px;
+				}
+			}
+		}
+
+		> section {
+			padding: 9px 1.5em;
+
+			abbr, span {
+				display: block;
+			}
+		}
+
+		p {
+			color: $light-grey;
+			font-size: pxem(11px);
+			line-height: 1;
+			padding: 9px 0 1em;
+		}
+
+		footer {
+			overflow: hidden;
+			display: none;
+			@include relative(null,null,1);
+		}
+	}
+
+	.performer-title {
+		font:700 pxem(20px) $web-font;
+		line-height: 1;
+		padding: 9px 1em 5px;
+
+		> a {
+			color: $color;
+			text-decoration: none;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	.c-button.see-tickets {
+		display: block;
+		@include radius(0 0 3px 3px);
+		padding: 13px 0;
+		font-size: 1.23em;
+	}
+
+
+	div.product-result-reviews {
+		padding: 5px 0;
+	}
+
+	span.product-result-reviews {
+		margin-left: 1em;
+	}
+
+	.product-seller-price {
+		padding: 0 0 6px;
+
+		img {
+			float: left;
+		}
+	}
+
+	a.see-tickets {
+		background-color: $color;
+	    color: #FFF;
+	    padding: 9px 0;
+	    text-align: center;
+	    font:700 pxem(15px) $web-font;
+	    @include radius(4px);
+	    display: block;
+
+	    &:hover {
+	    	color:#fff;
+	    }
+
+	    > i {
+	    	margin-left: 8px;
+	    	font-size: pxem(14px);
+	    	line-height: 1;
+	    }
+
+	    &.more-buying-version {
+	    	display: inline-block;
+	    	float: right;
+	    	padding: 9px; 
+
+	    	> i {
+	    		margin-left: 2px;
+	    	}
+	    }
+	}
+
+	.infscr-loading {
+		@include absoluteCenter(64);
+		bottom: 0;
+		z-index: 9;
+		@include wh(64px,64px);
+	}

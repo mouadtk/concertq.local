@@ -1,0 +1,170 @@
+<?php
+        require_once('recaptchalib.php');
+                        $publickey = "6LfkE_YSAAAAAA8OmGFZE1sQzbtSzSETX7ITPP8O"; 
+                        $privatekey = "6LfkE_YSAAAAAG4dVHLAHT9_p1q8efU3v3hTmTjs";
+
+ ?>
+ <script type="text/javascript">
+            var RecaptchaOptions = {
+    theme : 'white'
+ };
+
+        </script>
+<div id="page">
+    <div id="main-container">
+
+        <div id="sitecontent">
+
+            <div class="wrapper">
+
+
+                <form id="contact-form" class="styled-form" action="" method="post" accept-charset="utf-8">
+                      <?php if(!empty($_POST)) : ?>  
+                    <?php
+             
+                        $resp = recaptcha_check_answer ($privatekey,
+                                $_SERVER["REMOTE_ADDR"],
+                                $_POST["recaptcha_challenge_field"],
+                                $_POST["recaptcha_response_field"]);
+
+                        if ($resp->is_valid){
+                         ?>  
+                          <div class="alert alert-success">your message was sent</div>
+                          <?php
+                        }else{
+                            ?>
+                           <div class="alert alert-danger">the captcha code was incorrect</div> 
+                           <?php
+                        }
+                        
+                        ?>
+
+                     
+
+                     
+                        <?php endif; ?>
+                    <div style="display:none"></div>    
+                    <h1 class="title_event_search" style="font-size:2em;paddin-bottom:15px">Contact us</h1>
+
+                    <div class="note">
+                        <p>We are more than happy to hear from you and we’ll be more than glad to answer your questions. Feel free to contact us at any time, and as we get your email we’ll provide a response as fast as we can. </p>
+                        
+                    </div>
+
+                    <p class="row half first">
+                        <label for="id_Fname">First Name: </label>
+                        <span class="field"><input type="text" name="first_name" id="id_name" required title="
+                                                   please fill out this field"></span>
+                    </p>
+                    <p class="row half">
+                        <label for="id_Lname">Last Name: </label>
+                        <span class="field"><input type="text" name="last_name" id="id_email" required></span>
+                    </p>
+                    <p class="row half first">
+                        <label for="id_email">Email:</label>
+                        <span class="field"><input class="mailcheck" type="email" name="email" id="id_email" required placeholder="mail@domain.com"></span>
+                    </p>
+
+                    <p class="row half">
+                        <label for="id_phone">Phone number: </label>
+                        <span class="field"><input type="tel" name="phone" id="id_phone" required></span>
+                    </p>
+                    <p class="row half first">
+                        <label for="id_contactP">Contact preference: <span class="required">*</span></label>
+                        <span class="field"><select name="preference" id="id_preference" class="email" style="width:285px;background-color:#E1E1DB;border-radius:3px" />
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                            </select>
+                        </span>
+                    </p>
+                    <p class="row half">
+                        <label for="id_contactR">Contact reason: <span class="required">*</span></label>
+                        <span class="field"><select name="reason" id="id_contactR" class="email" style="width:285px;background-color:#E1E1DB;border-radius:3px" />
+                            <option value="sales">Sales</option>
+                            <option value="support">Support</option>
+                            <option value="guarantee">100% Guarantee</option>
+                            <option value="career">Career</option>
+                            <option value="general_question">General Question</option>
+                            <option value="business_development">Business Development</option>
+                            <option value="other">Other</option>
+                            </select>
+                        </span>
+                    </p>
+                    <p class="row">
+                        <label for="id_message">Message: </label>
+                        <span class="field"><textarea cols="40" rows="5" name="message" id="id_message" width="640px !imporatnt" required></textarea></span>
+                    </p>
+                    
+                    
+
+              
+                        
+             
+
+
+                   
+                    <p class="submit-row">
+    <?php
+                       // you got this from the signup page
+                        echo recaptcha_get_html($publickey);
+                        ?>
+             
+                        <button type="submit"  style="float:left">SEND</button>
+                    </p>
+                </form>
+
+                <aside id="contact-info">
+                    <dl>
+                        <!--                        <dt>Email</dt>-->
+                        <img style="vertical-align:middle" width="24" height="24" alt="Mail" src="<?php echo $this->basePath() . '/img/mail_.png' ?>"/>
+                        <strong style="vertical-align:middle"> Email Address</strong>
+                        <dd><a href="mailto:info@concertq.com" title="Click to send us an email">info@concertq.com</a></dd>
+                        <!--                        <dt>Telephone</dt>
+                                                <dd><a href="tel:00306977447033" title="Click to call us">+30 8944 447 033</a></dd>
+                                                <dt>Skype</dt>
+                                                <dd><a href="skype:combaditravel?call" title="Click to call us on Skype">concertticketsQ</a></dd>
+                                                <dt>Address</dt>
+                                                <dd>
+                                                    <address>
+                                                        Combadi Ltd.<br />
+                                                        1 Kings Avenue<br />
+                                                        London<br />
+                                                        N21 3NA<br />
+                                                        England<br /><br />
+                                                        Company No. 08714321
+                                                    </address>
+                                                </dd>-->
+
+                    </dl>
+                    <div class="pagesNav">
+                        <div class="inner">
+
+                            <a href="<?php echo $this->url('www/about', array()); ?>" alt="Read About ConcertQ.com" title="Read About ConcertQ.com" >About Us</a>
+
+                            <a alt="ContactQ.com" title="Contact ConcertQ.com" href="<?php echo $this->url('www/contact', array()); ?>">Contact Us</a>
+
+                            <a href="<?php echo $this->url('www/help', array()); ?>" alt="Read the ConcertQ.com Help" title="Read the ConcertQ.com Help" class="last ">Help</a>
+
+                        </div>
+                        <div class="inner">
+                            <a href="https://www.facebook.com/concertticketsq" alt="Follow us on Facebook" title="Follow us on Facebook">Follow us on<span><img class="about-img" src="<?php echo $this->basePath(); ?>/img/32-facebook.png"></span></a>
+
+                             <a href="https://twitter.com/Concert_Q" alt="Follow us on Twitter" title="Follow us on Twitter">Follow us on<span><img class="about-img" src="<?php echo $this->basePath(); ?>/img/32-twitter.png"></span></a>
+
+                        <a href="https://plus.google.com/110116933600242198559" alt="Follow us on Google plus" title="Follow us on Google plus">Follow us on<span><img class="about-img" src="<?php echo $this->basePath(); ?>/img/32-googleplus.png"></span></a>
+
+                        <a href="http://www.pinterest.com/concertq/" alt="Follow us on Pinterest" title="Follow us on Pinterest">Follow us on<span><img class="about-img" src="<?php echo $this->basePath(); ?>/img/32-pinterest.png"></span></a>
+
+                        </div>
+
+
+                    </div>
+                </aside>
+            </div>
+
+        </div>
+
+
+    </div></div>
+
+

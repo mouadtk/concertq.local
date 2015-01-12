@@ -1,0 +1,55 @@
+<head>
+    <meta charset="utf-8">
+
+    <?php
+    
+   // $categorie = 'Concert'; //Concert
+   
+    
+   // $description = 'Find ' . $city->get_city_name() . ' ' . date('Y') . ' Q info at ' ;
+    //$keywords = $performer->get_name() . ' ' . $categorie . ' tickets';
+
+//    echo $this->headMeta()
+//            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+//            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+//            ->appendName('description', $description)
+//            ->appendName('keywords', $keywords);
+//
+//
+//
+//    $event = $cityEvent->current();
+//    if ($cityEvent->count() === 0) {
+//        foreach ($events as $ev) {
+//            $event = $ev;
+//            break;
+//        }
+//    }
+//    
+//    $title = $performer->get_name() . ' ' . $categorie . ' tickets - ' . $event->getVenue()->get_venueName();
+//
+//    echo $this->headTitle($title);
+    
+    ?>
+
+    <?php
+    echo $this->headLink(
+                    array('rel' => 'shortcut icon',
+                        'type' => 'image/vnd.microsoft.icon',
+                        'href' => $this->basePath() . '/img/concertq-logo.png'
+            ))
+            ->prependStylesheet($this->basePath() . '/css/dest/concertq.css')
+            ->prependStylesheet('http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+    ?>
+
+    <!-- Le styles -->
+    <?php
+    // echo $this->partial('layout/head_css.phtml', array('meta_keywords', $this->meta_keywords));
+//    echo $this->prependStylesheet($this->basePath() . '/css/dest/concertq.min.css')
+//            ->prependStylesheet('http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+//              
+    ?>
+
+
+
+
+</head>

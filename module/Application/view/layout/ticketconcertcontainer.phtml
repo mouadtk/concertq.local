@@ -1,0 +1,98 @@
+<?php if (!empty($event) && $comingfromgoogle == 0) : ?>
+
+    <h1><?php echo $this->escapeHtml($event->get_name()); ?></h1>
+
+    <p><span class="rht count-tickets"><strong><?php //echo  $this->escapeHtml($event->get_count());          ?></strong></span>  <?php echo $event->get_date()->format("l"); ?>, <?php echo $event->get_date()->format("F d"); ?>, <?php echo $event->get_date()->format("Y"); ?> <?php echo $event->get_time()->format("h:i a"); ?>  <?php echo $event->getVenue()->getCity()->get_name(); ?>,  <?php echo $event->getVenue()->getCity()->getState()->get_abbreviation(); ?>
+        <?php
+        if ($event->getVenue()->getCity()->get_state_id()->get_country_id()->get_id() != 217)
+            echo $event->getVenue()->getCity()->get_state_id()->get_country_id()->get_name();
+        ?>
+
+
+        <?php
+        if (count($otherdates) >= 2)
+            echo '(' . count($otherdates) . ' more dates)';
+
+        else if (count($otherdates) === 1)
+            echo '(' . count($otherdates) . ' more date)';
+        else {
+            return 0;
+        }
+        ?> 
+        <br /><select  itemscope itemtype="http://schema.org/Event" class="eventselect">
+            <option value="default">Other Dates</option>
+            <option  value="<?php echo $this->escapeHtml($event->get_id()); ?>"><?php echo $event->get_date()->format("l"); ?>, <?php echo $event->get_date()->format("F d"); ?>, <?php echo $event->get_date()->format("Y"); ?> <?php echo $event->get_time()->format("h:i a"); ?>  </option>           
+
+            <?php foreach ($otherdates as $otherdate) : ?>
+                <option value="<?php echo $this->escapeHtml($otherdate->get_id()); ?>"><?php echo $otherdate->get_date()->format("l"); ?>, <?php echo $otherdate->get_date()->format("F d"); ?>, <?php echo $otherdate->get_date()->format("Y"); ?> <?php echo $otherdate->get_time()->format("h:i a"); ?>  </option>
+
+            <?php endforeach; ?>
+        </select></p>   
+
+<?php else : ?>
+
+    <?php foreach ($otherdates as $otherdate) : ?>
+        <?php
+        $cityConcat = preg_replace_callback(
+                '/-([a-z])/', function ($matches) {
+            return $matches[1];
+        }, $event->getVenue()->getCity()->get_link_dash()
+        );
+        ?>
+        <div itemscope itemtype="http://schema.org/Event">
+            <div itemprop="startDate" content="<?php echo $otherdate->get_date()->format("m-d-Y") ?>" ></div>
+            <div itemprop="name" content="<?php echo $otherdate->get_name(); ?>" ></div>
+            <div itemprop="location" content="<?php echo $otherdate->getVenue()->get_name(); ?> <?php
+            echo $otherdate->getVenue()->getCity()->get_name() . " " . $otherdate->getVenue()->getCity()->getState()->get_abbreviation() . " " . $otherdate->getVenue()->getCity()->getCountry()->get_name();
+            ;
+            ?> " ></div>
+            <div itemprop="url" content="<?php echo "http://" . $this->escapeHtml($otherdate->getHost()->get_link_dash()) . ".concertq.com/" . $cityConcat . "-" . $this->escapeHtml($otherdate->getVenue()->get_link_dash()) . ".html"; ?>" ></div>
+            <div itemprop="doorTime" content="<?php echo $otherdate->get_date()->format("m-d-Y") . $otherdate->get_time()->format("Th:m:s"); ?>"></div>
+
+        </div>  
+    <?php endforeach; ?> 
+
+    <?php
+    $i = 0;
+    $j = 1;
+    ?>
+    <?php foreach ($otherdates as $otherdate) : ?>
+        <?php if ($i == 0) : ?>
+            <h1><?php echo $this->escapeHtml($otherdate->get_name()); ?></h1>
+            <p><span class="rht count-tickets"><strong><?php //echo $this->escapeHtml($ticketevent->get_count());        ?></strong> </span>  <?php echo $otherdate->get_date()->format("l"); ?>, <?php echo $otherdate->get_date()->format("F dget_date"); ?>, <?php echo $otherdate->get_date()->format("Y"); ?> <?php echo $otherdate->get_time()->format("h:i a"); ?>  <?php echo $otherdate->getVenue()->getCity()->get_name(); ?>,  <?php echo $otherdate->getVenue()->getCity()->getState()->get_abbreviation(); ?> 
+
+                <?php
+                if (count($otherdates) - 1 >= 2)
+                    echo '(' . (count($otherdates) - 1) . ' more dates)';
+
+                else if (count($otherdates) - 1 === 0)
+                    return 0;
+                ?> </p>
+
+            <select   class="eventselect">
+                <option value="default">Other Events</option>
+                <option value="<?php echo $this->escapeHtml($otherdate->get_id()); ?>"><?php echo $otherdate->get_date()->format("l"); ?>, <?php echo $otherdate->get_date()->format("F d"); ?>, <?php echo $otherdate->get_date()->format("Y"); ?> <?php echo $otherdate->get_time()->format("h:i a"); ?>   </option>
+            <?php endif; ?>
+            <?php if ($i == 1) : ?>
+
+
+                <?php if ($j == 1) : ?>
+
+                    <?php $j = 0; ?>
+                <?php endif; ?>
+
+
+
+                <option value="<?php echo $this->escapeHtml($otherdate->get_id()); ?>"><?php echo $otherdate->get_date()->format("D M j\, "); ?><?php echo $otherdate->get_time()->format("h:i A, "); ?><?php echo $otherdate->getVenue()->get_name(); ?></option>
+
+
+            <?php endif; ?>
+            <?php $i = 1; ?>
+        <?php endforeach; ?>     
+        <?php if ($j == 0) : ?>  
+        </select> 
+    <?php endif; ?>
+<?php endif; ?>
+
+
+

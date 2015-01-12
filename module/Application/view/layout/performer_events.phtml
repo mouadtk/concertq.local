@@ -1,0 +1,105 @@
+<table id="table-listing" class="table-listing" cellspacing="0" cellpadding="0">
+
+    <?php
+    if ($ajax === 0) {
+        echo "
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Event</th>
+            <th>Location</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>";
+    }
+    ?>
+
+
+    <tbody>
+
+        <tr></tr>
+        <?php foreach ($events as $event) { ?>
+            <tr itemscope
+                itemtype="http://schema.org/Event" 
+                class="filtertag"
+                data-venue="<?php echo $event->getVenue()->get_id(); ?>" 
+                data-city="<?php echo $event->getVenue()->getCity()->get_id(); ?>">
+                <td itemprop="startDate" content="<?php echo $event->get_date()->format("Y-m-d") ?>" class = "dtstart datevent" title = "<?php echo $event->get_date()->format("Y-m-d") . 'T' . $event->get_time()->format("H:i"); ?>">
+                    <abbr class = "value-title">
+                        <strong><?php
+                            echo $event->get_date()->format("M j");
+                            $current = (int) date("Y");
+                            $eventDate = (int) $event->get_date()->format("Y");
+                            if ($eventDate > $current) {
+                                echo ", $eventDate";
+                            }
+                            ?></strong>
+                        <span><?php echo $event->get_date()->format("D") . ' ' . $event->get_time()->format("G:i A"); ?></span>
+                    </abbr>
+                </td>
+                <td itemprop="name performer" content="<?php echo $event->get_name(); ?>" class = "event-summary">
+                    <a href = "#">
+                        <span  itemprop="doorTime" content="<?php echo $event->get_date()->format("Y-m-d") . $event->get_time()->format("Th:m:s"); ?>" class = "summary" title = "<?php echo $event->get_name(); ?>"><?php echo $event->get_name(); ?></span>
+                    </a>
+                </td>
+                <td itemprop="location" class = "venue">
+                    <span class = "fn org"><?php echo $event->getVenue()->get_name(); ?></span> -
+                    <span class = "adr">
+                        <span class = "locality"><?php echo $event->getVenue()->getCity()->get_name(); ?></span>,
+                        <span class = "region"><?php
+                            echo $event->getVenue()->getCity()->getState()->get_abbreviation();
+                            if ($event->getVenue()->getCity()->getCountry()->get_id() != 217) {
+                                echo ", " . $event->getVenue()->getCity()->getCountry()->get_name();
+                            }
+                            ?></span>
+                    </span>
+                </td> <?php
+//                //replace 'new-york' with 'newYork'
+//                $cityConcat = preg_replace_callback(
+//                        '/-([a-z])/', function ($matches) {
+//                    return strtoupper($matches[1]);
+//                }, $event->getVenue()->getCity()->get_link_dash()
+//                );
+                ?>
+                <?php
+                $cityConcat = preg_replace_callback(
+                        '/-([a-z])/', function ($matches) {
+                    return $matches[1];
+                }, $event->getVenue()->getCity()->get_link_dash()
+                );
+                ?>
+                <td itemprop="url" content="<?php echo "http://" . $this->escapeHtml($performer->get_link_dash()) . ".concertq.com/" . $cityConcat."-".$event->getVenue()->get_link_dash() . ".html"; ?>" class = "action">
+
+                    <a href="<?php
+                    echo $this->url('subdomain/ticketPage', array(
+                        'action' => 'ticket',
+                        'subdomain' => $performer->get_link_dash(),
+                        'city' => $cityConcat,
+                        'venue' => $event->getVenue()->get_link_dash()));
+                    ?>" onclick="ticketslink(this);
+                                return true;" data-eventid="<?php echo $this->escapeHtml($event->get_id()); ?>" data-citydash="<?php echo $cityConcat . "-" . $event->getVenue()->get_link_dash(); ?>" data-performerdash="<?php echo $this->escapeHtml($performer->get_link_dash()); ?>" data-performerid="event" data-venueid="<?php echo $this->escapeHtml($event->getVenue()->get_id()); ?>"  class="c-button see-tickets myTicketLink" title="Event Concert Tickets City" >See Tickets<i class="fa fa-angle-right"></i></a>
+
+                </td>
+                <td style="display: none">
+                    <a href="#">See more</a>
+                </td>
+            </tr>
+        <?php } ?> 
+
+    </tbody>
+</table>
+<?php
+$newoffset = $offset + $events->count();
+
+if ($countE === $events->count()) {
+
+
+    echo
+    '<a id="button_more" class="button_more" href="javascript:void(' . $newoffset .
+    ')" ><span>Show more</span></a>';
+}
+?>
+
+
+
+

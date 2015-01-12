@@ -1,0 +1,32 @@
+<header id="performer-presentation" class="performer-presentation c-wrapper">
+    <div class="performer-image">
+        <img src="<?php echo $this->basePath().'/'.$this->image("".$performer->get_link_dash(),"event",$performer->get_id());?>" alt="<?php echo $performer->get_name(); ?>" title="<?php echo $performer->get_name(); ?>">
+    </div>
+
+    <div class="performer-information">
+        <ul id="breadcrumbs" class="breadcrumbs">
+            <li><a href="<?php
+                echo $this->url('www', array());
+                ?>">Concertq<span style="display:inline"> >></span></a></li>
+            <li><i class="fa fa-angle-right"></i></li>
+            <li><a href="" class="current"><?php echo $performer->get_name(); ?> events</a></li>
+        </ul>
+
+        <h1><?php echo $performer->get_name(); ?> concert tickets</h1>
+
+        <?php
+                
+        $event=$cityEvent->current();
+        if ($cityEvent->count() === 0) {
+            foreach ($events as $ev) {
+                $event=$ev;
+                break;
+            }
+        }
+        ?>
+        
+        <p><?php echo $performer->get_name(); ?> is having new concert dates in <?php echo $event->getVenue()->getCity()->get_name(); ?>. Get your tickets early for perfomrer in concert on <?php echo $event->get_date()->format("l F jS, Y"); ?> at <?php echo $event->getVenue()->getCity()->get_name(); ?> at <?php echo $event->getVenue()->get_name(); ?>.</p>
+        
+        <span><?php echo $eventsCount; ?> Events found available in this time</span>
+    </div>
+</header>

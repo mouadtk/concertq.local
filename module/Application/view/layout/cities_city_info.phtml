@@ -1,0 +1,56 @@
+<header id="performer-presentation" class="performer-presentation c-wrapper">
+    <div class="performer-image_city">
+        <img src="<?php echo $this->basePath() . '/' . $this->image("" . $city->get_link_dash(), "city",$city->get_id()); ?>" alt="<?php echo $city->get_name(); ?>" title="<?php echo $city->get_name(); ?>">
+    </div>
+
+    <div class="performer-information_city">
+        <ul id="breadcrumbs" class="breadcrumbs">
+            <li><a href="<?php
+                echo $this->url('www', array());
+                ?>">Concertq ></a></li>
+            <li><i class="fa fa-angle-right"></i></li>
+            <li><a href="#" class="current"><?php echo $city->get_name(); ?> events</a></li>
+        </ul>
+
+        <h1>Concert Tickets <?php echo $city->get_name(); ?></h1>
+
+        <?php
+        $textVenue = "";
+        $textPerformer = "";
+
+        switch ($groupperformers->count()) {
+
+            case 2:
+                $textVenue = 'from ' . $groupperformers->current()->getVenue()->get_name();
+                $textPerformer = 'for ' . $groupperformers->current()->getHost()->get_name();
+                $groupperformers->next();
+
+                $textVenue .= ' to ' . $groupperformers->current()->getVenue()->get_name();
+                $textPerformer.= ' to ' . $groupperformers->current()->getHost()->get_name();
+
+                break;
+            case 1:
+                $textVenue = 'like ' . $groupperformers->current()->getVenue()->get_name();
+                $textPerformer = 'for ' . $groupperformers->current()->getHost()->get_name();
+
+                break;
+            default:
+                $textVenue = 'from ' . $groupperformers->current()->getVenue()->get_name();
+                $textPerformer = 'for ' . $groupperformers->current()->getHost()->get_name();
+                $groupperformers->next();
+
+                $textVenue .= ' to the ' . $groupperformers->current()->getVenue()->get_name();
+                $textPerformer.= ' to ' . $groupperformers->current()->getHost()->get_name();
+                $groupperformers->next();
+
+                $textVenue .= ' to ' . $groupperformers->current()->getVenue()->get_name();
+                $textPerformer.= ' to ' . $groupperformers->current()->getHost()->get_name();
+                break;
+        }
+        ?>
+
+        <p><?php echo $city->get_name(); ?> has amazing concert venues <?php echo $textVenue; ?>. Concert tickets <?php echo $textPerformer; ?> are availble right here in <?php echo $city->get_name(); ?>.</p>
+
+        <span><?php echo $eventsCount; ?> Events found available in this time</span>
+    </div>
+</header>

@@ -1,0 +1,27 @@
+<div class="c-filter">
+    <header class="clearfix">
+        <i id ="venues-filter" class="fa fa-minus rht"></i>
+        <h4>Venues</h4>
+    </header>
+    <form id="venues">
+        <div id="search">
+            <input id="venues-search" type="text" placeholder="Search..." size="40" name="q">
+        </div>
+        <ul id ="venues-list" style="
+            height: 300px;
+            overflow: scroll;
+            overflow-x: hidden;">
+
+            <?php
+            foreach ($groupvenues as $event) {
+                echo '<li class="venues-li">';
+                echo '<input type="checkbox" '
+                . ' value="' . $event->getVenue()->get_id() . '">';
+                echo '<label> ' . $event->getVenue()->get_name() . '</label>';
+                echo '</li>';
+            }
+            ?>
+
+        </ul>
+    </form>
+</div>

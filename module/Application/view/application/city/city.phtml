@@ -1,0 +1,53 @@
+<?php
+if ($ajax == true) {
+    echo $this->partial('layout/cities_city_events.phtml', array('events' => $events, 'offset' => $offset, 'eventsCount' => $eventsCount, 'ajax' => $ajax, 'city' => $city,'countE'=> $countE));
+    exit;
+}
+?>
+
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <?php echo $this->partial('layout/head.phtml', array('city' => $city,'MetaEvent'=>$MetaEvent,'OGmetas'=>$OGmetas)); ?>
+    <body>
+        <?php echo $this->partial('layout/header.phtml', array()); ?>
+        <div class="container">
+            <!--            <a>Performer</a>
+                        <hr>-->
+            <section id="event-concertq-container" class="event-concertq-container">
+
+                <?php echo $this->partial('layout/cities_city_info.phtml', array('city' => $city, 'eventsCount' => $eventsCount, 'groupperformers' => $groupperformers)); ?>
+
+                <section id="performer-events" class="performer-events c-wrapper">
+                    <aside id="filter-performer-events" class="filter-performer-events">
+
+
+                        <?php echo $this->partial('layout/cities_venue_filter.phtml', array('groupvenues' => $groupvenues)); ?>
+
+                        <?php // echo $this->partial('layout/cities_related_city.phtml', array('relatedPerformers' => $relatedPerformers));  ?>
+
+
+                    </aside>
+                    <div id="performer-events-listing" class="performer-events-listing">
+                        <?php echo $this->partial('layout/cities_city_events.phtml', array('events' => $events, 'offset' => $offset, 'eventsCount' => $eventsCount, 'ajax' => $ajax, 'city' => $city,'countE'=> $countE)); ?>
+
+                    </div>
+                    <?php  echo $this->partial('layout/cities_city_content.phtml', array('events' => $events,'city' => $city));  ?>            
+
+
+
+                </section>
+
+                <!--</section>-->
+
+                <?php echo $this->partial('layout/footer.phtml'); ?>
+                <?php echo $this->partial('layout/cities_partialJS.phtml'); ?>
+                <?php echo $this->partial('layout/faceslide.phtml'); ?> 
+                <?php echo $this->partial('layout/totopJs.phtml'); ?> 
+        </div> <!-- /container -->
+        <?php // echo $this->inlineScript()  ?>
+    </body>
+</html>
+
+
+

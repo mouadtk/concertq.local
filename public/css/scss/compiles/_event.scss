@@ -1,0 +1,198 @@
+.c-wrapper {
+	width: 75%;
+	min-width: 990px;
+	margin: 0 auto;
+}
+
+.breadcrumbs {
+	li {
+		display: inline-block;
+		margin-right: 7px;
+	}
+
+	i {
+		color: $light-grey;
+	}
+}
+
+.current {
+	font-weight: 700;
+	color: $black;
+}
+
+.performer-presentation {
+	margin:1.5em auto 1.5em;
+	position: relative;
+}
+
+.performer-image {
+	 overflow: hidden;
+	 @include wh(200px,200px);
+	 @include absolute(0,null,0,null,1);
+	 @include radius(6px 0 0 6px);
+	 @include boxsizing;
+
+	 img {
+	 	max-height:200px;
+	 }
+}
+
+.performer-information {
+	margin-left: 200px;
+	@include boxsizing;
+	padding:1.5em;
+	@include radius(0 6px 6px 0);
+	background-color:#fff;
+	height:200px;
+
+	h1 {
+		font:700 pxem(30px) $web-font;
+		color: $color;
+		padding:12px 0 7px 15px;
+	}
+
+	p {
+		font: pxem(15px) $web-font;
+		color: $light-grey;
+		padding: 0 0 1.3em 15px;;
+	}
+
+	span {
+		color:#999;
+		display: block;
+		text-align: right;
+	}
+}
+
+.performer-events {
+	position: relative;
+}
+
+.filter-performer-events {
+	@include absolute(0,null,0,null,1);
+	width: 235px;
+}
+
+.c-filter {
+	border-bottom: 1px dotted #d7d7d7;
+
+	h4 {
+		color: $black;
+		font:700 pxem(21px) $web-font;
+		padding: 12px 0;
+	}
+
+	ul {
+		padding: 0 0 1em 1em;
+
+		li {
+			padding: 6px 0;
+		}
+	}
+
+	i {
+		font-size: 20px;
+		line-height: 55px;
+		color: #777;
+		cursor: pointer;
+	}
+}
+
+.performer-events-listing {
+	background-color: $w;
+	@include radius(8px);
+	margin: 0 0 2em 270px;
+}
+
+.table-listing {
+	th {
+		text-align: left;
+		vertical-align: middle;
+		font:700 pxem(20px) $web-font;
+		color: $black;
+		padding: 20px 1em;
+	}
+
+	td {
+		color: $grey;
+		padding: 12px 1.6em 19px;
+		border-top: 1px dotted #ccc;
+		vertical-align: middle;
+	}
+
+	tbody {
+		tr:first-child {
+			td {
+				border:0;
+			}
+		}
+	}
+}
+
+.datevent {
+	width: 11%;
+	min-width:120px;
+
+	strong {
+		font: 700 pxem(19px) $web-font;
+		color: $black;
+		display: block;
+	}
+
+	span {
+		font-size:pxem(12px);
+		color:#777;
+	}
+
+}
+
+.event-summary {
+	width: 40%;
+
+	a {
+		font:700 pxem(19px) $web-font;
+		color: $color;
+	}
+}
+
+.venue {
+	width:30%;
+	font:400 pxem(16px) $web-font;
+	color: $grey;
+}
+
+.action {
+	width: 19%;
+	text-align: right;
+}
+
+a.c-button {
+	@include radius(6px);
+	background-color: $color;
+	color: $w;
+	text-align: center;
+	font:700 pxem(15px) $web-font;
+	display: inline-block;
+	padding: 7px 15px;
+
+	i {
+		font-size: 22px;
+		margin-left: 6px;
+		@include relative(null,2px,1);
+	}
+
+	&.buy-action {
+		padding: 6px 10px 7px;
+		@include relative(null,13px,1);
+		font-size: pxem(13px);
+
+		i {
+			font-size: 16px;
+			top: 1px;
+		}
+	}
+
+	&:hover {
+		color: $w;
+	}
+}

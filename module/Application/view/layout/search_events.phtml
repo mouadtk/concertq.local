@@ -1,0 +1,75 @@
+
+<tr></tr>
+<?php
+foreach ($eventsK as $eventK) {
+    $event = $eventK->getEvent();
+    ?>
+    <tr class="filtertag" itemtype="http://schema.org/Event"
+        data-venue="<?php echo $event->getVenue()->get_id(); ?>"
+        data-city="<?php echo $event->getVenue()->getCity()->get_id(); ?>"
+        data-performer="<?php echo $event->getHost()->get_id(); ?>"
+        data-venue-name="<?php echo $event->getVenue()->get_name(); ?>"
+        data-city-name="<?php echo $event->getVenue()->getCity()->get_name(); ?>"
+        data-performer-name="<?php echo $event->getHost()->get_name(); ?>"
+        >
+        <td itemprop="startDate" content="<?php echo $event->get_date()->format("Y-m-d") ?>" class = "dtstart datevent" title = "<?php echo $event->get_date()->format("Y-m-d") . 'T' . $event->get_time()->format("H:i"); ?>">
+            <abbr class = "value-title">
+                <strong><?php
+                    echo $event->get_date()->format("M j");
+                    $current = (int) date("Y");
+                    $eventDate = (int) $event->get_date()->format("Y");
+                    if ($eventDate > $current) {
+                        echo ", $eventDate";
+                    }
+                    ?></strong>
+                <span><?php echo $event->get_date()->format("D") . ' ' . $event->get_time()->format("G:i A"); ?></span>
+            </abbr>
+        </td>
+        <td itemprop="name performer" content="<?php echo $event->get_name(); ?>"class = "event-summary">
+            <a href = "<?php
+            echo $this->url('subdomain', array(
+                'subdomain' => $event->getHost()->get_link_dash()
+            ));
+            ?>">
+                <span itemprop="doorTime" content="<?php echo $event->get_date()->format("Y-m-d") . $event->get_time()->format("Th:m:s"); ?>" class = "summary" 
+                      title = "<?php
+                      $seoname = preg_replace('/\"/', '`', $event->get_name());
+                      echo $seoname;
+                      ?>">
+                          <?php
+                          $seoname = preg_replace('/\"/', '`', $event->get_name());
+                          echo $seoname;
+                          ?></span>
+            </a>
+        </td>
+        <td itemprop="location" class = "venue">
+            <span class = "fn org"><?php echo $event->getVenue()->get_name(); ?></span> -
+            <span class = "adr">
+                <span class = "locality"><?php echo $event->getVenue()->getCity()->get_name(); ?></span>,
+                <span class = "region"><?php
+                echo $event->getVenue()->getCity()->getState()->get_abbreviation();
+                if ($event->getVenue()->getCity()->getCountry()->get_id() != 217) {
+                    echo ", " . $event->getVenue()->getCity()->getCountry()->get_name();
+                }
+                          ?></span>
+            </span>
+        </td>
+        <td class = "action">
+            <?php
+            $cityConcat = preg_replace_callback(
+                    '/-([a-z])/', function ($matches) {
+                return strtoupper($matches[1]);
+            }, $event->getVenue()->getCity()->get_link_dash()
+            );
+            ?>
+            <a href="javascript:void(0);" onclick="ticketslink(this);" data-eventid="<?php echo $this->escapeHtml($event->get_id()); ?>" data-citydash="<?php echo $cityConcat . "-" . $event->getVenue()->get_link_dash(); ?>" data-performerdash="<?php echo $this->escapeHtml($event->getHost()->get_link_dash()); ?>" data-performerid="<?php echo $this->escapeHtml($event->getHost()->get_id()); ?>" data-venueid="<?php echo $this->escapeHtml($event->getVenue()->get_id()); ?>"  class="c-button see-tickets myTicketLink">See Tickets<i class="fa fa-angle-right"></i></a>
+
+
+            <!--<br/>-->
+        </td>
+        <td style="display: none">
+            <a href="#">See more</a>
+        </td>
+    </tr>
+<?php } ?> 
+

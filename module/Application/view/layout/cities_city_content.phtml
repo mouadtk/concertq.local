@@ -1,0 +1,28 @@
+<section id='footer-not' class="c-wrapper">
+
+
+    <div class="performer-information-footer">
+
+        
+            <h2 class="performe_title"><?php
+                $events->rewind();
+                echo $city->get_name();
+                ?> Concert Tickets <?php echo date('Y'); ?></h2>
+
+            <?php
+            try {
+                $content = $this->generateContent($city->get_link_dash(), "city");
+                if (array_key_exists($city->get_link_dash(), Application\Plugins\RealContent::$cityContent)) {
+                    echo Application\Plugins\RealContent::$cityContent[$city->get_link_dash()];
+                }
+                echo $content;
+            } catch (\Exception $ex) {
+                echo $this->partial('layout/cities_city_generatedContent.phtml', array(
+                    'file' => $ex->getMessage(),
+                    'city' => $city,
+                    'events' => $events));
+            }
+            ?>
+        
+    </div>
+</section>

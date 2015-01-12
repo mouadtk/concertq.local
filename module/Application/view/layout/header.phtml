@@ -1,0 +1,44 @@
+<header id="concertq-header" class="concertq-header clearfix">
+    <a href="<?php echo $this->url('www', array()); ?>" id="concertq-logo" class="concertq-logo"><img src="<?php echo $this->basePath(); ?>/img/logo-bold.png" width="194" height="46" alt="Concertq" class="concertq-logo"></a>
+
+    <div id="concertq-search" class="concertq-search">
+        <form id="searchForm" method="POST" action="<?php echo $this->url('www/searchPage', array()); ?>">
+            <input type="text" id="search" class="concertq-search-field" name="search" placeholder="Search concert events...">
+            <span class="fa fa-search send-search" id="send-search" title="Search"></span>
+        </form>
+        
+    </div>
+
+    <table class="about-concertq">
+        <tr>
+            <?php
+                if(isset($_SESSION['facebooklogin'])){
+                    echo '<th style="vertical-align:middle"> <a href='.$_SESSION['facebooklogin'].'><img class="img_facebook-login" src='.$this->basePath().'/img/loginfacebook.png title="Login facebook"><span id="login">login with facebook</span</a></th>';
+                }if(isset($_SESSION['fb_token'])){
+                    echo '<th style="vertical-align:middle">
+
+                       
+                                <img class="img_facebook" src=' . $_SESSION["profilepic"] . ' />
+                                    <span id="login">'.$_SESSION["logouturl"].'</span>
+                            </a>
+                        </th>';
+                    echo '<th style="vertical-align:middle"><b style="color:#09c">'.$_SESSION["username"].'</b></th>';
+                    
+
+                }
+             ?>
+            <!--<th style="vertical-align:middle"><img src="http://lorempicsum.com/futurama/350/200/1" class="img_facebook"></th>
+            <th style="vertical-align:middle"><b style="color:#FF9000">MOuad Deraoui</b></th>-->
+            <th style="vertical-align:middle"><a href="<?php echo $this->url('www/about', array()); ?>" style="color:white">About us</a></th>
+            <th style="vertical-align:middle"><a href="<?php echo $this->url('www/contact', array()); ?>" style="color:white">Contact us</a></th>
+            <th style="vertical-align:middle"><a href="<?php echo $this->url('www/help', array()); ?>" style="color:white">Help</a></th>
+        </tr>
+    </table>
+    <img id="toTop" src="<?php echo $this->basePath(); ?>/img/toTop.png" alt="" title="To top">
+</header>
+
+<form id="postevent"  action="test.php" method="post">
+    <input type="hidden" name="eventid" id="eventid"/>
+    <input type="hidden" name="performerId" id="performerId" />
+    <input type="hidden" name="venueId" id="venueId" />
+</form>

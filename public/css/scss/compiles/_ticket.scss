@@ -1,0 +1,355 @@
+.map-container {
+	position: relative;
+}
+
+.ticket-concertq-container {
+	position: relative;
+	padding:0 435px 2em 2em;
+	@include boxsizing;
+
+	header {
+		padding-top: 1em;
+	}
+
+	h1 {
+		color:$color;
+		font:700 pxem(25px) $web_font;
+	}
+
+	p {
+		padding: 0;
+		color:#555;
+		font-size:pxem(13px);
+	}
+}
+
+.existing-tickets span {
+	background-color:#49d2f2;
+}
+
+.no-tickets span {
+	background-color: #8e8e8e;
+}
+
+.selected-tickets span {
+	background-color: #9abf7b;
+}
+
+
+.concertq-listing-container {
+	@include absolute(null,0,74px,null,2);
+	@include wh(410px,94%);
+	overflow: auto;
+}
+
+.ct-filters {
+	background-color: #fff;
+	@include radius(6px 0 0 6px);
+	padding:1em;
+
+	> section {
+		margin-top:7px;
+		position: relative;
+
+		&:first-child {
+			margin:0;
+		}
+	}
+}
+
+.tooltip {
+	display: none;
+	@include absolute(null,null,32px,null,9);
+	@include radius(5px);
+	border:1px solid #bbb;
+	@include shadow(0 6px 6px rgba(0,0,0,0.15));
+	width:230px;
+	@include boxsizing;
+	padding: 1em;
+	background-color:#fff;
+
+	b.spr {
+	    top: -13px;
+	}
+}
+
+.ct-filters {
+	margin: 2em 0 1em;
+
+	section > label {
+		border: 1px solid #CCC;
+	    @include radius(5px);
+	    display: inline-block;
+	    padding: 5px;
+	    width: 50px;
+
+	    input {
+	    	text-align:center;
+	    	color:#333;
+	    	width: 75%;
+	    }
+
+	    i {
+	    	color:#777;
+	    }
+	}
+}
+
+
+.filter-list {
+	display: inline-block;
+
+	a {
+		border:1px solid #ccc;
+		@include radius(5px);
+		display: block;
+		vertical-align: top;
+		padding:5px;
+		width: 120px;
+
+		&:hover {
+			border:1px solid #aaa;
+			color:#333;
+		}
+
+		i {
+			line-height: 17px;
+		}
+	}
+}
+
+
+.t-listing {
+    background-color: #FFF;
+    @include radius(6px 0 0 6px);
+    margin-top: 9px;
+
+    header {
+    	font-weight: 700;
+    	border-bottom:1px solid #CCC;
+
+    	li {
+    		display: inline-block;
+    		padding: 1em;
+    		vertical-align: middle;
+    		text-transform: uppercase;
+    		color:#000;
+    		@include boxsizing;
+    	}
+    }
+
+    section {
+    	li {
+    		border-top:1px dotted #bbb;
+
+    		&:first-child {
+    			border:0;
+    		}
+    	}
+    }
+}
+
+.section-row {
+	min-width: 120px;
+	@include boxsizing;
+	color:#777;
+	display: inline-block;
+	padding: 1em;
+	background-color: #fbfbfb;
+	vertical-align: top;
+	min-height:30px;
+	position: relative;
+		
+
+	> strong {
+		display: block;
+		font:700 pxem(17px) $basic_font;
+		color:#333;
+	}
+
+	b {
+		color:#333;
+		font-weight:700;
+	}
+}
+
+.jscroll {
+	height: 200px;
+}
+
+.ticket-price {
+	display: inline-block;
+	color:#064c76;
+	font:700 pxem(16px) $basic_font;
+	padding:1em 0;
+	vertical-align: top;
+	min-width: 50px;
+	@include boxsizing;
+	text-align: center;
+}
+
+.broker-logo {
+	display: inline-block;
+	min-height:30px;
+	vertical-align: top;
+	padding: 1em 0 1em 9px;
+	min-width:120px;
+	@include boxsizing;
+}
+
+.buy_tickets {
+	margin: 1em;
+	@include boxsizing;
+}
+
+.header-section, .header-broker {
+	min-width:120px;
+}
+
+.header-price {
+	min-width: 50px;
+	padding:1em 0 !important;
+	text-align:center;
+}
+
+.note-ticket {
+	@include absolute(null,1em,1.4em,null,1);
+
+	em {
+		cursor: pointer;
+	}
+
+	> div {
+		display: none;
+		@include absolute(-16px,null,null,null,2);
+
+		article {
+			@include absolute(null,null,null,null,8);
+			@include radius(5px);
+			border:1px solid #bbb;
+			@include shadow(0 6px 6px rgba(0,0,0,0.15));
+			width:180px;
+			@include boxsizing;
+			padding:9px;
+			background-color:#fff;
+			font-size:.9em;
+		}
+		
+		b.spr {
+			@include relative(null,null,9);
+		}
+	}
+}
+
+.zoom-map {
+	width:30px;
+	@include absolute(2em,null,3em,null,9);
+
+	> a {
+		border:1px solid #ccc;
+		@include radius(5px 5px 0 0);
+		background-color: #fff;
+		color:#285c80;
+		display: inline-block;
+		width:30px;
+		padding: 7px 0;
+		text-align: center;
+
+		&.minus-zoom {
+			@include radius(0 0 5px 5px);
+			@include relative(0,10px,2);
+		}
+
+	}
+
+}
+
+.zoom-range.noUi-target {
+    @include radius(0);
+    border-width: 0 1px;
+    @include wh(10px,100px);
+    @include relative(null,5px,1);
+}
+
+.range-price{display:inline-block;margin: 0 10px 0 20px;width:200px;}.noUi-target,.noUi-target *{-webkit-touch-callout:none;-webkit-user-select:none;-ms-touch-action:none;-ms-user-select:none;-moz-user-select:none;-moz-box-sizing:border-box;box-sizing:border-box}.noUi-base{@include wh(100%,100%);position:relative}.noUi-origin{@include absolute(0,0,0,0,1);}.noUi-handle{position:relative;z-index:1}.noUi-stacking .noUi-handle{z-index:10}.noUi-stacking+.noUi-origin{*z-index:-1}.noUi-state-tap .noUi-origin{-webkit-transition:left .3s,top .3s;transition:left .3s,top .3s}.noUi-state-drag *{cursor:inherit!important}.noUi-horizontal{height:10px}.noUi-horizontal .noUi-handle{width:25px;height:25px;left:-17px;top:-8px}.noUi-horizontal.noUi-extended{padding:0 15px}.noUi-horizontal.noUi-extended .noUi-origin{right:-15px}.noUi-vertical{width:18px}.noUi-vertical .noUi-handle{width:30px;height:10px;left:-10px;top:-5px;@include shadow(none)}.noUi-vertical.noUi-extended{padding:15px 0}.noUi-vertical.noUi-extended .noUi-origin{bottom:-15px}.noUi-background{background:#FAFAFA;box-shadow:inset 0 1px 1px #f0f0f0}.noUi-connect{background:#333;box-shadow:inset 0 0 3px rgba(51,51,51,.45);-webkit-transition:background 450ms;transition:background 450ms}.noUi-origin{border-radius:2px}.noUi-target{@include radius(10px);border:1px solid #D3D3D3;box-shadow:inset 0 1px 1px #F0F0F0,0 3px 6px -5px #BBB}.noUi-target.noUi-connect{box-shadow:inset 0 0 3px rgba(51,51,51,.45),0 3px 6px -5px #BBB}.noUi-dragable{cursor:w-resize}.noUi-vertical .noUi-dragable{cursor:n-resize}.noUi-handle{border:1px solid #D9D9D9;@include radius(50px);background:#FFF;cursor:default;box-shadow:inset 0 0 1px #FFF,inset 0 1px 7px #EBEBEB,0 3px 6px -3px #BBB}.noUi-active{box-shadow:inset 0 0 1px #FFF,inset 0 1px 7px #DDD,0 3px 6px -3px #BBB}.noUi-handle:after,.noUi-handle:before{display:block;position:absolute;height:14px;width:1px;background:#E8E7E6;left:14px;top:6px}.noUi-handle:after{left:17px}.noUi-vertical .noUi-handle:after,.noUi-vertical .noUi-handle:before{width:14px;height:1px;left:6px;top:14px}.noUi-vertical .noUi-handle:after{top:17px}[disabled] .noUi-connect,[disabled].noUi-connect{background:#B8B8B8}[disabled] .noUi-handle{cursor:not-allowed}.noUi-state-blocked .noUi-connect,.noUi-state-blocked.noUi-connect{background:#4FDACF}
+#zoom-map .noUi-target:before {
+    border: 1px solid #D3D3D3;
+    @include shadow('0 1px 1px #F0F0F0 inset, 0 3px 6px -5px #BBB');
+    content: "";
+    display: block;
+    @include absolute(-1px,null,-6px,null,1);
+    @include wh(8px,111px);
+}
+
+.n-scroll {
+	overflow: hidden;
+}
+
+.the-map {
+	position: relative;
+	margin-top: 4em;
+	padding: 0 0 2em;
+
+	> div {
+		@include absolute(null,null,null,-2em,1);
+		@include absoluteCenter(502);
+
+		li {
+			display: inline-block;
+			padding-right: 2em;
+
+			> span {
+				@include radius(50em);
+				@include wh(27px,27px);
+				display: inline-block;
+				vertical-align:middle;
+				margin-left:5px;
+			}
+
+			> strong {
+				font:700 pxem(17px) $web-font;
+				color: $black;
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+	}
+}
+	
+
+.existing-tickets span {
+	background-color:#49d2f2;
+}
+
+.no-tickets span {
+	background-color: #8e8e8e;
+}
+
+.selected-tickets span {
+	background-color: #9abf7b;
+}
+
+.affected-filters {
+	span {
+		@include radius(6px);
+		background-color: $w;
+		display: inline-block;
+		margin:0 8px 0 0;
+		padding: 6px;
+		font-weight: 700;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #fafafa;
+		}
+	}
+}
+
+.refresh-filters {
+	color: $black;
+	font-size: 18px;
+
+	&:hover {
+		text-decoration: none;
+	}
+}

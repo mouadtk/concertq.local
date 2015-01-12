@@ -1,0 +1,16 @@
+<?php echo $this->doctype(); ?>
+<html lang="en">
+    <?php echo $this->partial('layout/head.phtml', array('MetaEvent' => $MetaEvent, 'OGmetas' => $OGmetas)); //, array('MetaEvent'=>$MetaEvent)); ?>
+    <body id="contact" class="contact">
+        <?php echo $this->partial('layout/header.phtml', array()); ?>
+
+
+        <?php echo $this->partial('layout/about_us.phtml'); ?> 
+
+
+        <?php echo $this->partial('layout/footer.phtml'); ?>
+	 <?php echo $this->partial('layout/totopJs.phtml'); ?> 
+	 <?php echo $this->partial('layout/faceslide.phtml'); ?> 
+
+    </body>
+</html>

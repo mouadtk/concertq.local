@@ -1,0 +1,298 @@
+#results_main_content{float:none;padding:0;width:auto;}
+.sidebarSection_BR{clear:both;width:485px;}
+.jangoMailSignup{position:relative;height:90px;}
+.jangoMailSignup .jangoMailSignupTxt{float:left;clear:left;}
+.checkboxes{position:absolute;right:60px;}
+.jangoMailSampleButton{position:absolute;right:130px;top:50px;}
+.jangoMailSignupButton{position:absolute;top:50px;right:30px;}
+div#results_tix_help_box_lisa_bell{float:right;width:264px;height:65px;background:transparent url(/img/content/results_ticket/help_box.jpg) scroll no-repeat top left;padding-top:55px;padding-right:164px;padding-bottom:55px;padding-left:0;z-index:10;position:relative;}
+div#results_tix_help_box_lisa_bell ul{list-style-position:outside;z-index:10;padding-left:35px;color:Black;}
+div#results_tix_help_box_lisa_bell ul li.tix_helpBoxQuestion{margin-bottom:5px;cursor:pointer;font-size:11px;z-index:10;}
+div#results_tix_help_box_lisa_bell ul li.tix_helpBoxQuestion:hover{font-weight:bold;}
+div#results_tix_help_box_lisa_bell ul li.activeHelpBoxQuestion{font-weight:bold;}
+div#results_tix_help_box_lisa_bell div.tix_helpBoxAnswer{display:none;position:absolute;left:-283px;top:0;width:277px;z-index:10;background:white url(/img/structure/faq_gradient.gif) scroll repeat-x bottom left;border:1px solid #c2c2c2;padding:10px;}
+div#results_tix_help_box_lisa_bell div.tix_helpBoxAnswer a{text-decoration:underline;}
+div#results_tix_help_box_lisa_bell div.tix_helpBoxAnswer ul,div#results_tix_help_box_lisa_bell div.tix_helpBoxAnswer ul li{list-style-type:disc;}
+div#results_tix_help_box_lisa_bell div.tix_helpBoxAnswer div.tix_help_answer_closer{float:right;margin-left:10px;margin-bottom:5px;cursor:pointer;text-decoration:underline;position:static;}
+div#results_tix_help_box_lisa_bell ul li.tix_helpBoxQuestion div.shown_tix_answer{display:block;}
+div#results_tix_help_center_box{float:right;width:424px;height:105px;padding-top:0;padding-right:30px;padding-bottom:20px;padding-left:0;z-index:10;position:relative;}
+div#results_tix_help_center_box .FAQ_image{margin-bottom:-117px;}
+div#results_tix_help_center_box h2{margin-left:20px;font-size:20px;width:264px;color:White;}
+div#results_tix_help_center_box ul{list-style-position:outside;z-index:10;padding-left:23px;margin-top:1px;color:Black;width:264px;}
+div#results_tix_help_center_box ul li.tix_helpBoxQuestion{margin-bottom:2px;cursor:pointer;font-size:11px;z-index:10;}
+div#results_tix_help_center_box ul li.tix_helpBoxQuestion:hover{font-weight:bold;}
+div#results_tix_help_center_box ul li.activeHelpBoxQuestion{font-weight:bold;}
+div#results_tix_help_center_box div.tix_helpBoxAnswer{display:none;position:absolute;left:-283px;top:8px;width:277px;z-index:10;background:white url(/img/structure/faq_gradient.gif) scroll repeat-x bottom left;border:1px solid #c2c2c2;padding:10px;}
+div#results_tix_help_center_box div.tix_helpBoxAnswer a{text-decoration:underline;}
+div#results_tix_help_center_box div.tix_helpBoxAnswer ul,div#results_tix_help_center_box div.tix_helpBoxAnswer ul li{list-style-type:disc;}
+div#results_tix_help_center_box div.tix_helpBoxAnswer div.tix_help_answer_closer{float:right;margin-left:10px;margin-bottom:5px;cursor:pointer;text-decoration:underline;position:static;}
+div#results_tix_help_center_box ul li.tix_helpBoxQuestion div.shown_tix_answer{display:block;}
+#ssc_contentDiv{float:right;min-height:575px;}
+.ssc_onMapMsg{font-family:Arial;font-size:8pt;text-align:center;}
+#ssc_listColHdr{ background:url(../images/ticketsbrunomars_point.gif) repeat-x bottom; }
+.resultsHeadingTD{height:auto;}
+.ssc_lhTable{
+	font-family:Arial;
+	font-size:13px;
+	color:#FFF;
+	cursor:pointer;
+	text-align:left;
+	border-collapse:collapse;
+	width:454px;
+	border-bottom:1px solid #eee;
+	background-color: #000;
+}
+.xxxssc_lhTable span{color:#036;font-size:12px!important;font-weight:bold;}
+.ssc_lhTable td{vertical-align:middle;table-layout:fixed;border-collapse:collapse;height:30px; border-bottom:1px solid #eee; text-align: center}
+.ssc_lhStar{width:25px;}
+.ssc_lrStar{width:15px;}
+.ssc_lhSec{width:75px;text-align:left;padding-left:5px;}
+.ssc_lhRow{width:50px;}
+.ssc_lrRow{width:85px;color:#333;}
+.ssc_lhQty{width:50px;}
+.ssc_lrQty{text-align:center; width:30px;}
+.ssc_lrQty select{width:43px;}
+.ssc_lrQty option{text-align:right;padding-right:18px;}
+.ssc_lhPri{width:85px;}
+.ssc_lrPri{width:80px;color:#009DE6; font-size:13px; font-weight:700}
+.ssc_lhBuy{vertical-align:bottom;width:23px}
+.ssc_lhBuy span{font-size:9px;}
+.ssc_lrBuy{text-align:center;vertical-align:middle;padding-top:8px;padding-left:5px;width:99px;}
+.ssc_lrBuyBtn{font-family:Arial;font-size:8pt;vertical-align:top;background:url(../img/ticketsBuy.png) no-repeat;width:69px;height:25px;cursor:pointer;color:transparent;border:none;}
+.ssc_lrListTable{border-collapse:collapse;text-align:left;width:100%;border-right:1px solid #bbb;}
+.ssc_lrTable{ border-collapse:collapse;cursor:pointer;font-family:Arial;font-size:9px;table-layout:fixed; width:450px; }
+.ssc_lrTable .ssc_lrSec { width:88px;} .ssc_lrTable .ssc_lrRow { width:45px } .ssc_lrTable .ssc_lrQty { width:50px } .ssc_lrTable .ssc_lrPri { color:#ff9000; width:60px;font-size:1.3em !important } .ssc_lrOddOffMap, .ssc_lrEvenOffMap { padding:3px 0 3px 3px;  }
+.ssc_lrTable b{font-size:11px!important;}
+.ssc_lrQtyPlus1{width:70px;padding-right:10px;color:Green;font-weight:bold;}
+.ssc_lrEvenOnMap .RTSubmitLink{background-position:top right;}
+.ssc_lrEvenOffMap .RTSubmitLink{background-position:center right;}
+.ssc_lrOddOffMap .RTSubmitLink{background-position:center left;}
+.ssc_lrHilite .RTSubmitLink{background-position:bottom left;}
+.ssc_lrHilite .RTSubmitLink:hover{background-position:bottom right;}
+.ssc_lrOddOnMap{background-color:#F8F8F8; border-style:dotted; border-color:#ccc; padding:3px 0 3px 3px; }
+.ssc_lrEvenOnMap{background-color:#FFF; border-color:#ccc; border-style:dotted; padding:3px 0 3px 3px; }
+.ssc_lrOddNotSel{background-color:#FFF; padding:3px 0 3px 3px;}
+.ssc_lrEvenNotSel{background-color:#F8F8F8; padding:3px 0 3px 3px;}
+.ssc_lrOddOffMap{background-color:#F8F8F8; padding:3px 0 3px 3px;}
+.ssc_lrEvenOffMap{background-color:#FFF; padding:3px 0 3px 3px;}
+.ssc_lrOddOnMap td,.ssc_lrEvenOnMap td,.ssc_lrOddNotSel td,.ssc_lrEvenNotSel td,.ssc_lrOddOffMap td,.ssc_lrEvenOffMap td,.ssc_lrHilite td{padding-top:3px;padding-bottom:3px;vertical-align:middle;}
+.ssc_lrHilite{background-color:#e4f1f7; padding:3px 0 3px 3px;}
+.ssc_lrNotes{padding-top:0!important;padding-left:5px; font-family:Arial;font-size:11px !important; line-height:11px; font-style:italic; color:#999}
+/* j'ai changé #ssc_filterDiv display:none to inline and add visiblity*/;
+#ssc_filterDiv{position:relative;width:460px;text-align:left;clear:both;display:inline;visibility: visible !important;}
+.ssc_filterTbl{font-family:Arial;font-weight:bold;height:100%;width:100%;}
+.ssc_filterTbl .activeTixPrFilter{color:#000;font-weight:bold;}
+.ssc_filterTbl select{margin:3px;font-family:Arial;text-align:left;border:solid 1px #aaa;position:relative;outline:#000 none 0; padding:3px; font-size:11px}
+.ssc_filterTbl select option{padding:0 2px;}
+.ssc_qtyValues{font-family:Arial;font-size:9pt;text-align:right;}
+.ssc_qtyAsk{font-size:12px;color:#009DE6;}
+.ssc_qtyTell{font-size:10pt; margin-right:5px}
+.ssc_priceValues{font-family:Arial;font-size:11px;text-align:right;padding-right:20px;}
+.ssc_priceAsk{font-size:12px;color:#009DE6;}
+.ssc_priceTell{font-size:10pt;color:#009DE6;}
+#ssc_resetBtn{font-family:Arial;font-size:12px;margin-top:0;}
+#xssc_showPlus1{position:absolute;top:6px;}
+.ssc_offerPlus1{margin-left:3px;font-size:8pt;font-family:Arial;text-decoration:none;z-index:24;cursor:pointer;}
+.ssc_offerPlus1:hover{z-index:25;}
+#ssc_whyPlus1{background-color:#FAFAFA;border:1px solid #FF0000;color:#000000;display:none;font-family:Arial;font-size:12px;font-weight:400;right:0;padding:3px;position:absolute;text-align:left;top:20px;width:300px;z-index:40;}
+#ssc_tktGroups{text-align:left;font-size:12px;height:700px !important;overflow-y:auto;overflow-x:hidden;border-left:#bbb 1px solid;border-bottom:#bbb 1px solid;}
+#ssc_tktGroups *{font-size:12px;}
+.ssc_notOnMapBktHdrTxt{font-family:Arial;font-size:9pt;background-color:White;text-align:center;height:22px;border-collapse:collapse;}
+.ssc_selectedBktHdrTxt{font-family:Arial;font-size:9pt;background-color:White;text-align:center;height:22px;border-collapse:collapse;}
+.ssc_notSelBktHdrTxt{font-family:Arial;font-size:14px;background-color:#eee;border:1px solid #ccc; padding:5px 0;text-align:center;height:22px;border-collapse:collapse;}
+.ssc_noneInCritHdrTxt{font-family:Arial;font-size:10pt;font-weight:bold;background-color:#ffd700;text-align:center;height:22px;border-collapse:collapse;}
+#ssc_vfsDiv{border-color:#800;border-style:none;border-collapse:collapse;position:relative;display:none;overflow:hidden;height:350px;text-align:left;top:0;left:0;z-index:11;}
+#ssc_vfsTbl{background-color:#222;text-align:left;vertical-align:middle;border-style:none;border-collapse:collapse;height:304px;width:470px;position:relative;}
+#ssc_vfsImage0,#ssc_vfsImage1,.ssc_vfsImage{border-style:none;padding:0;vertical-align:middle;height:304px;width:404px;}
+#ssc_vfsImageDiv0,#ssc_vfsImageDiv1{text-align:center;overflow:hidden;display:inline;position:absolute;top:0;left:29px;}
+#ssc_vfsImageCell{height:255px;width:320px;text-align:center;background-color:#666;}
+#VFSnoImage{font-family:Arial;color:#fff;font-size:12pt;font-weight:bold;text-align:center;vertical-align:middle;}
+#ssc_vfsLeftArrow,#ssc_vfsRightArrow{font-family:Arial;font-size:18pt;font-weight:bolder;text-align:center;color:#0c0;cursor:pointer;text-decoration:none;outline:none;}
+.ssc_vfsPanCell{width:29px;}
+#ssc_vfsHdr{width:400px;position:absolute;top:0;left:29px;background-color:#333;opacity:.8;filter:alpha(opacity=80);}
+#ssc_vfsCaption{font-family:Arial;font-size:10px;color:#fff;text-align:left;}
+#ssc_vfsClose{font-size:15px;font-family:Arial,sans-serif;color:#fff;background-color:#333;border-style:none;border-color:#f00;border-width:0;cursor:pointer;font-weight:bold;}
+#ssc_vfsClose:hover{color:#888;}
+#ssc_staticMap{cursor:move;position:relative;left:0;top:0;overflow:hidden;width:100%;}
+#ssc_mapCell{text-align:center;vertical-align:top;position:relative} #ssc_map { width:100% !important;}
+#resultsTixTable tr td div.tixStar,#resultsTixTable_Extra tr td div.tixStar,.resultsTixTable tr td div.tixStar,.tixStar{float:right;height:22px;width:22px;background:transparent url(/img/content/results_ticket/star.gif) scroll no-repeat bottom right;cursor:default;margin-left:5px;}
+.ssc_lrEvenOnMap .tixStar{background-position:top right;}
+.ssc_lrEvenOffMap .tixStar{background-position:center right;}
+.ssc_lrOddOffMap .tixStar{background-position:center left;}
+.ssc_lrOddOnMap .tixStar{background-position:top left;}
+.ssc_lrHilite .tixStar{background-position:bottom left;}
+#greenPortion,#greenPortion b{float:left;line-height:23px;color:#393;}
+#bestValLegendContainer{float:left;line-height:23px;width:200px;}
+#bestValueStarLegend{background:transparent url(/img/content/results_ticket/star.gif) no-repeat scroll right bottom;height:22px;width:22px;float:left;clear:none;}
+#ssc_tktListDiv{} #results_venue_map {}
+.resultsHeadingTD div.tixSrtLinksContainer a.tixSrtLink{width:10px;height:8px;display:block;background:url(/img/structure/phase1/arrow_sprite.png) scroll no-repeat top right;position:absolute;top:10px;right:10px;}
+.resultsHeadingTD div.tixSrtLinksContainer a#activeSrtASC,a#activeSrtASC{background-position:top left;}
+.resultsHeadingTD div.tixSrtLinksContainer a#activeSrtDESC,a#activeSrtDESC{background-position:bottom left;}
+.RTSubmitLink{cursor:pointer;display:block;height:30px;width:48px;text-align:center;background:transparent url('/img/structure/buy.gif') no-repeat scroll top left;}
+#ssc_filterAndListCell{padding-right:10px;}
+#allMapStuff{float:left; text-align:center; width:590px;}
+#ssc_vfsDiv_wrapper{width:100%;background-color:#222;}
+.ssc_tn_filter{margin-left:10px;float:left;}
+.ssc_tn_filter h3{padding:5px 0;}
+.ssc_tn_filter input{margin-top:8px;padding:1px 3px;background:#bbb url(/img/structure/phase1/sidebar_headers_center.png) top left repeat-x;border-left:1px solid #bdbdbd;border-right:1px solid #bdbdbd;border-bottom:1px solid #bdbdbd;cursor:pointer;}
+#ssc_tn_price_select,#ssc_tn_quantity_select{border:1px solid #000;}
+.tn_active_filter{color:#d40101;font-weight:bold;}
+.tn_empty_filter{color:#909090;}
+#ssc_listBktHdr{display:none!important;}
+#ssc_mapCellHolder{}
+#tn_evt_results_area{width:720px;padding:0 10px 10px 10px;float:right;}
+#tn_evt_results_area_main{max-height:440px;overflow-x:hidden;overflow-y:scroll;border-bottom:1px solid #bbb;}
+.event_tbl{clear:both;width:720px;border-left:1px solid #bbb;border-right:1px solid #bbb;}
+#event_tbl_main{border-left:1px solid #bbb;border-right:1px solid #bbb;width:703px;}
+.event_tbl .event_tbl_header td{-moz-background-clip:border;-moz-background-inline-policy:continuous;-moz-background-origin:padding;background:#bbb url(http://content.ticketnetwork.com/img/structure/phase1/sidebar_headers_center.png) repeat-x scroll left top;color:#09547c;cursor:pointer;}
+.event_tbl .event_tbl_header td{background-color:#629cce;color:#036;font-size:12px;font-weight:bold;height:30px;padding-bottom:3px;padding-left:10px;padding-top:3px;}
+.event_tbl td.event{width:150px;}
+.event_tbl td.location{width:150px;}
+.event_tbl td.evt_pricing{width:60px;cursor:auto;}
+.event_tbl td.price{width:60px;cursor:auto;}
+.event_tbl td.date{width:80px;}
+.event_tbl td.view_tix{width:117px;cursor:auto;}
+#event_tbl_main td.view_tix{width:100px;}
+#event_tbl_main h2{color:#333;font-size:13px;}
+#event_tbl_main a,#event_tbl_main b{text-decoration:none;font-weight:bold;}
+#event_tbl_main .evtRowEven{background-color:#e5e5e8;}
+#event_tbl_main .evtRowOdd{background-color:#f2f2f4;}
+#event_tbl_main tr.evtRowEven td,#event_tbl_main tr.evtRowOdd td{padding-left:10px;padding-top:3px;padding-bottom:3px;}
+#tn_evt_filters_sidebar{margin:0 10px 0 0;width:210px;float:left;}
+.tn_filter_link{display:block;padding:3px 0 0 18px;background-image:none;}
+.activeFilterLink{background:transparent url(http://content.ticketnetwork.com/img/structure/checkmark.gif) scroll no-repeat bottom left;}
+.tn_evt_fil_box_toggle{cursor:pointer;padding:5px 0;margin-left:20px;color:#09547c;}
+.tn_evt_fil_box_toggle:hover{color:#b40101;}
+.evt_fil_datepicker{width:68px;border:1px solid #ccc;padding:2px;}
+.limHeightScrollFils{max-height:300px;overflow-y:scroll;overflow-x:hidden;}
+.tn_emptyFilter{color:#909090;}
+#tn_tix_results_area{width:525px;padding-right:10px;float:left;}
+#tn_tix_results_area_main{max-height:600px;overflow-x:hidden;overflow-y:scroll;border-bottom:1px solid #bbb;width:515px;}
+.tix_tbl{clear:both;width:515px;border-left:1px solid #bbb;border-right:1px solid #bbb;}
+#tix_tbl_main{border-left:1px solid #bbb;border-right:1px solid #bbb;width:500px;}
+.tix_tbl .tix_tbl_header td{-moz-background-clip:border;-moz-background-inline-policy:continuous;-moz-background-origin:padding;background:#bbb url(http://content.ticketnetwork.com/img/structure/phase1/sidebar_headers_center.png) repeat-x scroll left top;color:#09547c;cursor:pointer;}
+.tix_tbl .tix_tbl_header td{background-color:#629cce;color:#036;font-size:12px;font-weight:bold;height:30px;padding-bottom:3px;padding-left:10px;padding-top:3px;}
+.tix_tbl td.section{width:173px;}
+.tix_tbl td.row{width:70px;}
+.tix_tbl td.details{width:188px;}
+.tix_tbl td.qty{width:60px;}
+.tix_tbl td.price{width:70px;}
+.tix_tbl td.view_tix{width:65px;cursor:auto;text-align:center;}
+#tix_tbl_main h2{color:#333;font-size:11px;}
+#tix_tbl_main a,#tix_tbl_main b{text-decoration:none;font-weight:bold;}
+#tix_tbl_main .tixRowEven{background-color:#e5e5e8;}
+#tix_tbl_main .tixRowEven td{font-size:11px;}
+#tix_tbl_main .tixRowOdd{background-color:#f2f2f4;}
+#tix_tbl_main .tixRowOdd td{font-size:11px;}
+#tix_tbl_main tr.tixRowEven td,#tix_tbl_main tr.tixRowOdd td{padding-bottom:5px;padding-left:10px;padding-top:5px;}
+#tn_tix_filters{margin:10px 10px 10px 0;width:505px;padding:10px 10px;}
+.tn_tix_filter_link{font-weight:bold;line-height:16px;background-image:none;}
+.tn_tix_filter_highlight{color:#d40101;}
+.tn_tix_fil_box_toggle{padding:5px 0;}
+.buy_tix_button{background:transparent url(/img/structure/buy.gif) no-repeat scroll left center;display:block;height:30px;width:48px;}
+.tixRowOdd .buy_tix_button{background-position:right center;}
+#tn_quantity_select{width:50px;border:1px solid #000;}
+#tn_price_select{width:100px;border:1px solid #000;}
+.tn_filter_space{margin-left:40px;}
+.tn_filter_space_2{margin-left:10px;width:240px;margin-bottom:10px;}
+.performerText{float:right;width:720px;padding:0 10px;}
+.performerText p{margin-bottom:.5em;}
+.performerText li{margin-left:15px;}
+.term_main_image{float:left;padding-right:5px;padding-bottom:5px;}
+#ticket_column_left{width:540px;float:left;}
+#ticket_column_right{width:460px;float:left;}span#evtDateDtls_rt_hdr,span#evtDateDtls_rt_hdr span{color:#b40101;font-weight:bold;}
+#results_tix_header_addr_maps{float:left;width:470px;margin-top:5px;}
+#results_page_title{color:#09547c;float:left;font-size:20px;font-weight:bold;width:515px;}
+.tix_view_other{color:#09547c;font-size:11px;font-weight:normal;margin-left:7px;}
+#results_page_guarantee{margin-top:50px;margin-left:4px;}
+#guarantee_explanation{bottom:-20px;display:none;font-size:16px;right:310px;position:absolute;width:515px;z-index:300;height:240px;}
+#results_page_guarantee a{font-size:17px;font-weight:bold;color:green;}
+#invite_guar_container{margin-bottom:10px;}
+#iggli_frame{float:left;width:170px;height:50px;}
+#iggli_explanation{bottom:80px;display:none;font-size:16px;left:20px;position:absolute;width:160px;z-index:100;}
+#results_tix_header_addr{overflow:hidden;clear:both;}
+.tn_tix_select{width:40px;}
+.results_loading{opacity:.4;}
+#tn_evt_results_cover{background-color:#06c;height:471px;left:270px;opacity:.2;filter:alpha(opacity = 20);position:absolute;top:36px;width:720px;z-index:100;}
+#tn_evt_results_loading_div{background-color:white;color:black;opacity:1;position:absolute;filter:alpha(opacity = 100);z-index:101;width:200px;left:520px;top:250px;border:1px solid #bbb;font-weight:bold;font-size:13px;text-align:center;line-height:50px;}
+#results_tix_links{float:left;height:80px;padding:20px 0 0 85px;}
+#results_tix_links_flash{float:right;height:80px;width:400px;}
+.MapIconsListItem{float:left;font-size:11px;padding-right:10px;text-align:center;width:50px;padding:0 15px;}
+.MapIconsListItem a#driving_icon{background-position:right top;margin-left:9px;}
+.MapIconsListItem a#restaurant_icon{background-position:0 -32px;}
+.MapIconsListItem a#hotels_icon{background-position:left bottom;}
+.MapIconsListItem a#weather_icon{background-position:right bottom;margin-left:5px;}a.results_tix_link_icon{-moz-background-clip:border;-moz-background-inline-policy:continuous;-moz-background-origin:padding;background:white url(/img/content/results_ticket/tix_links_icons.gif) no-repeat scroll left top;clear:none;display:block;float:left;height:32px;width:36px;}
+#tix_map_info{color:#d40101;font-size:14px;text-align:center;width:485px;position:absolute;z-index:250;}
+#tix_map_info b{font-size:14px;}
+.pager{clear:both;text-align:right;list-style-type:none;}
+.pager li{display:inline;list-style-type:none;list-style-image:none;list-style-position:outside;padding:.5em;font-weight:bold;font-size:15px;}
+.pager li a{font-weight:bold;font-size:15px;}
+.tn_evt_date_filter{margin-bottom:25px;width:355px;}
+#tn_evt_date_button{background:transparent url(http://content.ticketnetwork.com/images/search_by_date.gif) no-repeat scroll left top;height:30px;width:110px;margin-top:-6px;float:right;cursor:pointer;}
+#tn_evt_date_button:hover{background-position:left bottom;}
+.tn_evt_error_label{color:#d40101;}
+#tn_evt_start_error{margin-top:-2px;float:left;}
+#tn_evt_filters_header{width:720px;float:right;padding:0 10px;}
+#tn_evt_max_error{float:right;width:417px;margin-top:-30px;}
+.datepicker_calendar{margin-left:2px;margin-bottom:-2px;}
+#search_performers td{padding-right:20px;}
+#search_performers td.last{padding-right:0;}
+#balloon{display:none;width:320px;padding:15px;border:2px solid #376092;background-color:#ecf1f8;position:absolute;z-index:99;text-align:left;left:66px;top:66px;}
+#balloon h1{color:Red;font-style:italic;font-size:22px;margin-bottom:5px;}
+#balloon h2{color:Red;text-decoration:underline;font-size:12px;margin-left:15px;}
+#balloon ol{margin-left:30px;list-style-position:outside;}
+#balloon ol li,#balloon ol li u{color:#376092;font-style:italic;font-size:12px;}
+#lowDown{float:right;clear:none;z-index:100;position:relative;top:0;right:0;}
+#whyBuy,#aboutTix{position:relative;clear:none;float:left;}
+#whyBuy{width:236px;}
+#aboutTix{width:236px;margin-left:15px;}
+.lowDownContent{border-left:1px solid #bdbdbd;border-right:1px solid #bdbdbd;background-color:#fff;padding:5px;}
+.lowDownExpl{width:340px;position:absolute;z-index:100;top:0;right:0;margin:top:10px;margin-right:50px;border:2px solid #bdbdbd;background-color:#fff;padding:10px 5px;}
+.lowDownExpl div{float:left;clear:both;font-family:Arial,Helvetica,Sans-Serif;font-size:11px;color:#000;}
+.lowDownExpl div ul{list-style:disc outside;margin-left:20px;text-indent:0;}
+.lowDownExpl div ul li{margin:0;text-indent:0;}
+#badge125{position:absolute;left:430px;bottom:0;}
+.x{float:right;clear:both;height:18px;}span#evtDateDtls_rt_hdr,span#evtDateDtls_rt_hdr span{color:#000;}
+#ticket_page_header{float:left;width:1000px;position:relative;margin-bottom:10px;}
+#results_tix_header_addr_maps{width:430px!important;}
+#results_page_title{width:430px;}
+#ssc_contentDiv{float:right;overflow:hidden;min-height:0!important; margin-left:6px;height:100% }
+.ssc_lrOddOnMap td,.ssc_lrEvenOnMap td,.ssc_lrOddNotSel td,.ssc_lrEvenNotSel td,.ssc_lrOddOffMap td,.ssc_lrEvenOffMap td,.ssc_lrHilite td{padding:3px 0 3px 3px;}
+#allMapStuff{position:relative;}
+#ssc_filterAndListCell{/*padding-right:0!important;*/}
+#ticketGroupLayout{margin:0 auto;clear:both;}
+#ticketGroupLayout2{margin:0 auto;clear:both;}
+#ticketListContainer{vertical-align:top;}
+#mapContainer{vertical-align:top;}
+#ssc_filterDiv{background-color:#fff;display:block;color:#009DE6 !important;}
+#ssc_tktGroups,#ssc_listColHdr,.ssc_lrListTable{border:none;}
+#map_info_VFS{display:none;}
+/**************/
+ul.tabs { list-style:none; height:44px; border-bottom:1px solid #eee; width:482px; font-family:Arial, Helvetica, sans-serif  }
+ul.tabs li { float:left;margin-right:12px; overflow:hidden; position:relative;  }
+ul.tabs li a { text-decoration:none; color:#111; display:block; font-size:1.2em; font-weight:700; padding:13px 9px; border-bottom:3px solid #f6f6f6; outline:none; height:15px }
+ul.tabs li a:hover, .active a { color:#009DE6 !important }	
+ul.tabs img { position:relative; top:2px; }
+.tab_content { padding:0 0 0 15px; }
+#seatab { display:none }
+/************/
+.boxg { margin:0 0 1em } .bgrey { background-color:#0A0806; color:#fff; padding:10px; } .bgrey h2 { border:0; background:0; color:#fff; } #filter { width:180px; } #select { width:190px; }
+.bgin { background:url(../imgs/bigi_price.gif) no-repeat 0 0; padding:3px 0; width:62px; } .bgin input { border:0; font-size:.9em; color:#FF9000; text-align:center; width:50px; } label.left, label.right { padding:1px 2px 0 0 }
+
+#container { /*border:1px solid #f0f0f0; border-width:0 1px width: 470px !important*/ }
+#map_img { margin:3em 0 }
+
+/* important */
+.ssc_lhDlv { text-align:left; width:105px; }
+.ssc_lhMark, .ssc_lhSec, .ssc_lhRow, .ssc_lhQty, .ssc_lhPri, .ssc_lhDlv, .ssc_lhBuy { font-family:Arial, Helvetica, Sans-serif; background:0 none; }
+#ssc_tktGroups div:first-child { border:0; }
+.ssc_lrMark { vertical-align:top; }
+#ssc_filterHdr, #ssc_filterHdrInvite { background:none transparent; color:#000; }
+#ssc_fltrResetBtn { color:#87CEFA; }
+#ssc_fltrQtyShowPlus1, #ssc_showPlus1Label { margin-left:3px; }
+#ssc_fltrDlvEtktLabel { margin-left:3px; top:1px; }
+#ssc_fltrResetEncl { right:22px; }
+.ui-slider .ui-slider-handle { height:.95em; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { background-color:#444; }
+.ui-slider .ui-slider-handle { border-color:#444; }
+

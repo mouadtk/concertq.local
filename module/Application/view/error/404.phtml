@@ -1,0 +1,33 @@
+<html lang="en">
+    <?php
+    echo $this->headLink(
+                    array('rel' => 'shortcut icon',
+                        'type' => 'image/vnd.microsoft.icon',
+                        'href' => $this->basePath() . '/img/logo-bold.png'
+            ))
+            ->prependStylesheet($this->basePath() . '/css/dest/concertq.css')
+//            ->prependStylesheet($this->basePath() . '/css/style.css')
+            ->prependStylesheet('http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+    ?>
+    <body>
+        <?php echo $this->partial('layout/header.phtml', array()); ?>
+
+
+        <div class="wrap">
+            <div class="logo">
+                <p>OOPS! - Could not Find it</p>
+                <img src="<?php echo $this->basePath(); ?>/img/404.png" alt="404 error" />
+                <div class="sub">
+                    <p>
+                        <a href="<?php
+                echo $this->url('www', array());
+                ?>" class="button_more">Back</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <?php echo $this->partial('layout/partialjs'); ?> 
+
+    </body>
+</html>

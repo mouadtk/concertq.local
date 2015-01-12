@@ -1,0 +1,68 @@
+<?php
+$perfomers = array();
+$venues = array();
+$cities = array();
+foreach ($eventsK as $eventK) {
+    $event = $eventK->getEvent();
+    $perfomers[$event->getHost()->get_id()] = $event->getHost()->get_name();
+    $venues[$event->getVenue()->get_id()] = $event->getVenue()->get_name();
+    $cities[$event->getVenue()->getCity()->get_id()] = $event->getVenue()->getCity()->get_name();
+}
+$perfomers = array_unique($perfomers);
+$venues = array_unique($venues);
+$cities = array_unique($cities);
+?>
+
+<section class="filter-home">
+    <a href="#" id="filter-cities"><i class="fa fa-angle-down rht"></i> Performers</a>
+    <div id="performers-tooltip" class="events-tooltip tooltip cities">
+        <div>
+            <form id='form_filter_performers' method="post">  
+                <ul>
+                    <?php
+                    foreach ($perfomers as $key => $value) :
+                        ?>
+                        <li><input type="checkbox" value='<?php echo $key; ?>'><label><?php echo $value; ?> </label> </li>
+                    <?php endforeach; ?>
+
+                </ul>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="filter-home">
+    <a href="#" id="filter-cities"><i class="fa fa-angle-down rht"></i> Venues</a>
+    <div id="performers-tooltip" class="events-tooltip tooltip cities">
+        <div>
+            <form id='form_filter_venues' method="post">  
+                <ul>
+                    <?php
+                    foreach ($venues as $key => $value) :
+                        ?>
+                        <li><input type="checkbox" value='<?php echo $key; ?>'><label><?php echo $value; ?> </label> </li>
+                    <?php endforeach; ?>
+
+                </ul>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="filter-home">
+    <a href="#" id="filter-cities"><i class="fa fa-angle-down rht"></i> Cities</a>
+    <div id="performers-tooltip" class="events-tooltip tooltip cities">
+        <div>
+            <form id='form_filter_cities' method="post">  
+                <ul>
+                    <?php
+                    foreach ($cities as $key => $value) :
+                        ?>
+                        <li><input type="checkbox" value='<?php echo $key; ?>'><label><?php echo $value; ?> </label> </li>
+                    <?php endforeach; ?>
+
+                </ul>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,151 @@
+@charset "UTF-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video, input {
+  @include default;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  @include default();
+  background: #f3f3f3;
+  font: .8em $basic-font;
+  position: relative;
+  min-width: 980px;
+}
+
+
+blockquote, q {
+  quotes: none;
+
+  &:before, &:after {
+    content: '';
+    content: none;
+  }
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: $light-grey;
+  text-decoration: none;
+
+  &:hover {
+    color: $color;
+    text-decoration: underline;
+  }
+
+  img {
+    border:0;
+  }
+}
+
+input:focus {
+  outline: 0;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+.lft {
+  float: left;
+}
+
+.rht {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+
+/** HEADER **/
+
+.concertq-header {
+  background: url('#{$img-path}/background-header-concertq.jpg') #282828;
+  border-bottom: 2px solid #fff;
+  padding: 1em;
+  @include relative(null,null,9);
+  @include boxsizing;
+  width: 100%;
+
+  &.fixscroll {
+    position: fixed;
+    top: 0;
+    @include opacity(0.9, null);
+
+    &:hover {
+      @include opacity(1, null);
+    }
+  }
+}
+
+.concertq-search {
+  @include absoluteCenter(500);
+  top: 13px;
+  background-color: $w;
+  @include radius(6px);
+  padding: 9px;
+
+  > input {
+    border:0;
+    background: transparent;
+    color: $black;
+    font:700 pxem(16px) $web-font;
+    width:480px;
+  }
+
+  > span {
+    font-size: pxem(16px);
+  }
+}
+
+.concertq-logo img {
+  margin: 12px 0 7px 15px;
+}
+
+.about-concertq {
+  float: right;
+
+  li {
+    display: inline-block;
+    padding: 0 9px;
+    line-height: 46px;
+
+    a {
+      color : $w;
+      font: pxem(16px) $web-font;
+
+      &:hover {
+        color: $color;
+      }
+    }
+  }
+}

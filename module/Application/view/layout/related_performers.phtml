@@ -1,0 +1,16 @@
+<div class="c-filter">
+    <header class="clearfix">
+        <!--<i id ="relatedEvents-filter"  class="fa fa-plus rht"></i>-->
+        <h4>Related Events</h4>
+    </header>
+    <ul id ="relatedEvents-filter">
+        <?php
+        foreach ($relatedPerformers as $relatedPerformer) {
+
+            echo '<li><a href="'
+            . $this->url('subdomain', array('subdomain' => $relatedPerformer->get_link_dash()))
+            . '" alt="'.$relatedPerformer->get_name().' Concert Tickets">' . $relatedPerformer->get_name() . '</a></li>';
+        }
+        ?>
+    </ul>
+</div>

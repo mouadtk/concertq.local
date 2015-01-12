@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	
+jQuery(function($){
+
+	var domains = ['hotmail.com', 'gmail.com', 'aol.com'];
+var topLevelDomains = ["com", "net", "org"];
+
+var superStringDistance = function(string1, string2) {
+  // a string distance algorithm of your choosing
+}
+
+$('.mailcheck').blur(function() {
+	var input = $(this);
+  input.mailcheck({
+    domains: domains,                       // optional
+    topLevelDomains: topLevelDomains,       // optional
+    distanceFunction: superStringDistance,  // optional
+    suggested: function(element, suggestion) {
+      // callback code
+      input.next('span').remove();
+      $('<span class="help"/>').insertAfter(input).append('Vous vouliez dire <a style="color:blue" href="#"> '+suggestion.full+'</a>').find('a').click(function(e) {
+      		e.preventDefault();
+      		input.val($(this).text());
+      		input.trigger('blur');
+      });
+    },
+    empty: function(element) {
+      input.next('span').remove();
+    }
+  });
+});
+
+});
+
+</script>

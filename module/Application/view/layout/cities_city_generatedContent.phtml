@@ -1,0 +1,83 @@
+<?php
+
+//show real content
+//
+$nbr_phrase = 1;
+
+if (!array_key_exists($city->get_link_dash(), Application\Plugins\RealContent::$cityContent)) {
+    $nbr_phrase = 2;
+} else {
+    echo Application\Plugins\RealContent::$cityContent[$city->get_link_dash()];
+}
+
+
+
+
+//generated content
+
+$website = new ArrayObject(array(), ArrayObject::STD_PROP_LIST);
+
+$website->website_url_name = "'" . $this->url('subdomain', array(
+            'subdomain' => $city->get_link_dash()
+        )) . "'";
+$website->website_child_category_name = 'concert';
+$website->website_category_name = 'concert';
+
+
+$mysql_event_res = array();
+foreach ($events as $event) {
+    $mysql_event_res = array(
+        'event_performer_name' => $event->getHost()->get_name(),
+        'event_venue_name' => $event->getVenue()->get_name(),
+        'event_city_name' => $event->getVenue()->getCity()->get_name(),
+        'event_state_name' => $event->getVenue()->getCity()->getState()->get_name(),
+        'event_date' => $event->get_date()->format('Y-m-d'),
+        'event_time' => $event->get_time()->format('H:i:s')
+    );
+    break;
+}
+
+$other_venues = array();
+$other_cities = array();
+foreach ($events as $event) {
+    $other_venues[] = $event->getVenue()->get_name();
+    $other_cities[] = $event->getVenue()->getCity()->get_name();
+}
+
+$other_performers = array();
+
+$content_params = array(
+    'website' => $website,
+    'mysql_event_res' => $mysql_event_res,
+    'other_venues' => $other_venues,
+    'other_cities' => $other_cities,
+    'other_performers' => $other_performers
+);
+
+//générer le contenu (resultat en format d'array)
+$event_category_name = strtolower('other');
+if ($event_category_name == 'other' || $event_category_name == 'others') {
+    $event_category_name = 'concerts';
+}
+
+$events->rewind();
+
+$content_page_phrases = Application\Plugins\Common::get_content($event_category_name, 'event-city-venue', $nbr_phrase, $content_params);
+
+$generatedContent = "";
+
+if ($content_page_phrases && trim($content_page_phrases[0]) != '' && trim($content_page_phrases[0]) != '.') {
+//Content
+    if ($nbr_phrase == 2) {
+        $generatedContent.= $content_page_phrases[1];
+    }
+    $generatedContent.= '<h3 class="performe_title">' . $city->get_name() . ' Concert Schedule Q</h3>';
+
+    $generatedContent.= $content_page_phrases[0];
+
+    file_put_contents($file, $generatedContent);
+
+    echo $generatedContent;
+} else {
+    
+}

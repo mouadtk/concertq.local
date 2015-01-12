@@ -1,0 +1,26 @@
+<div class="c-filter" style="display: none">
+    <header class="clearfix">
+        <i id ="venues-filter" class="fa fa-plus rht"></i>
+        <h4>Venues</h4>
+    </header>
+    <form id="venues">
+        <ul id ="venues-list" style="
+            height: 300px;
+            overflow: scroll;
+            overflow-x: hidden;">
+
+            <?php
+            foreach ($venues as $event) {
+
+
+                echo '<li data-city="' . $event->getVenue()->getCity()->get_id() . '" >';
+                echo '<input type="checkbox" '
+                . ' value="' . $event->getVenue()->get_id() . '">';
+                echo '<label> ' . $event->getVenue()->get_name() . '</label>';
+                echo '</li>';
+            }
+            ?>
+
+        </ul>
+    </form>
+</div>

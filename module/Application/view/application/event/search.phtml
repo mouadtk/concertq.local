@@ -1,0 +1,81 @@
+<?php
+if ($ajax === 1) {
+    echo $this->partial('layout/search_events.phtml', array('eventsK' => $eventsK, 'offset' => $offset, 'eventsCount' => $eventsCount, 'ajax' => $ajax, 'search' => $search));
+    exit;
+}
+?>
+
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <?php echo $this->partial('layout/head.phtml',array('MetaEvent'=>$MetaEvent,'OGmetas'=>$OGmetas)); //, array('MetaEvent'=>$MetaEvent)); ?>
+    <body>
+        <?php echo $this->partial('layout/header.phtml', array()); ?>
+        <div class="container">
+            <section id="event-concertq-container" class="event-concertq-container">
+                <header id="filters-home-events_search" class="filters-home-events clearfix">
+                    <h4>Filters</h4>
+
+                    <?php echo $this->partial('layout/filtercities_1.phtml'); ?> 
+
+                </header>
+
+                <section id="performer-events" class="performer-events c-wrapper">
+                    <aside id="filter-performer-events" class="filter-performer-events">
+
+
+                        <?php //echo $this->partial('layout/cities_venue_filter.phtml', array('groupvenues' => $groupvenues)); ?>
+
+                        <?php // echo $this->partial('layout/cities_related_city.phtml', array('relatedPerformers' => $relatedPerformers));  ?>
+
+
+                    </aside>
+                    <div id="performer-events-listing" class="performer-events-listing-search">
+                        <?php if($eventsK->count()){?>
+                        <table id="listing" class="table-listing" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr id="tableHead">
+                                    <th>Date</th>
+                                    <th>Event</th>
+                                    <th>Location</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php echo $this->partial('layout/search_events.phtml', array('eventsK' => $eventsK, 'offset' => $offset, 'eventsCount' => $eventsCount, 'ajax' => $ajax, 'search' => $search)); ?>
+                            </tbody>
+                        </table></div><?php }
+                        else {?>
+                            
+                        <img class="img-search" src="<?php echo $this->basePath() . '/img/noResults.png' ?>"/>
+                      <?php  }
+                        ?>
+                        
+                    </div>
+
+                    <div id="loader"><img src="<?php echo $this->basePath(); ?>/img/ajax-loader.gif" alt="loader" /></div>
+            <div id="hr">
+                
+                <div class="gridLoading">
+                    <span class="gridFooterLogoIcon"></span>
+    
+                </div>
+            </div>
+
+
+                </section>
+
+            </section>
+
+            <?php echo $this->partial('layout/footer.phtml'); ?>
+            <?php echo $this->partial('layout/search_partialJS.phtml', array('search'=> $search)); ?>
+            <?php echo $this->partial('layout/partialjs'); ?>
+            <?php echo $this->partial('layout/totopJs.phtml'); ?> 
+       
+        </div> <!-- /container -->
+        <?php // echo $this->inlineScript()  ?>
+    </body>
+</html>
+
+
+

@@ -1,0 +1,19 @@
+<header id="performer-presentation" class="performer-presentation c-wrapper">
+    <div class="performer-image">
+        <img src="<?php echo $this->basePath() . '/' . $this->image("","default",0); ?>" alt="<?php echo "ticket"; ?>">
+    </div>
+
+    <div class="performer-information">
+        <ul id="breadcrumbs" class="breadcrumbs">
+            <li><a href="<?php
+                echo $this->url('www', array());
+                ?>">Concertq</a></li>
+        </ul>
+
+        <h1>Events</h1>
+
+        <p>Search top content.</p>
+
+        <span><?php echo $eventsCount; ?> Events found available in this time</span>
+    </div>
+</header>

@@ -1,0 +1,192 @@
+<?php
+if ($ajax === 1) {
+
+    echo $this->partial('layout/performerbox', array('topperformers' => $topperformers, 'limit' => $limit, 'ajax' => $ajax, 'venues' => $venues, 'offset' => $offset));
+    exit;
+}
+?>
+<?php echo $this->doctype(); ?>
+
+<html lang="en">
+    <?php echo $this->partial('layout/head.phtml', array('MetaEvent' => $metas, 'OGmetas' => $OGmetas)); ?>
+    <body>
+        <?php echo $this->partial('layout/header.phtml', array()); ?>
+
+
+        <div id="home-concertq-container" class="home-concertq-container">
+<!--            <div align="right">  <a  href="" ><img src="<?php echo $this->basePath() . "/img/facebooklogin.png"; ?>"></a>
+            </div>-->
+            <header id="filters-home-events" class="filters-home-events clearfix">
+                <h4>Filters</h4>
+
+                <?php echo $this->partial('layout/filtercities'); ?> 
+
+            </header>
+
+            <section id="performers-listing" class="performer-listing">
+                <?php echo $this->partial('layout/performerbox', array('topperformers' => $topperformers, 'limit' => $limit, 'ajax' => $ajax, 'venues' => $venues, 'offset' => $offset)); ?>              
+            </section>
+            <span class="scrolles" style="display: none;"></span>
+            <div id="loader"><img src="<?php echo $this->basePath(); ?>/img/ajax-loader.gif" alt="loader" /></div>
+            <div id="hr">
+                
+                <div class="gridLoading">
+                    <span class="gridFooterLogoIcon"></span>
+    
+                </div>
+            </div>
+        </div>
+        <?php echo $this->partial('layout/footer.phtml'); ?>
+
+        <script type="text/javascript">
+        $(document).ready(function(){
+            $('.limit_check_p').click(function() {
+            /* Act on the event */
+            if($('.limit_check_p:checked').length >= 3){
+                $('.limit_check_p:not(:checked)').attr("disabled", "disabled");
+                
+            }else if($('limit_check_p:checked').length < 3){
+                $('.limit_check_p').attr('disabled', false);
+            }
+        });
+          $('.limit_check_c').click(function() {
+            /* Act on the event */
+            if($('.limit_check_c:checked').length >= 3){
+                $('.limit_check_c:not(:checked)').attr("disabled", "disabled");
+                
+            }else if($('limit_check_c:checked').length < 3){
+                $('.limit_check_c').attr('disabled', false);
+            }
+        });
+          $('.limit_check_v').click(function() {
+            /* Act on the event */
+            if($('.limit_check_v:checked').length >= 3){
+                $('.limit_check_v:not(:checked)').attr("disabled", "disabled");
+                
+            }else if($('limit_check_v:checked').length < 3){
+                $('.limit_check_v').attr('disabled', false);
+            }
+        });
+        });
+        $("img.lazy").lazyload({
+    effect : "fadeIn"
+});
+            max = 200;
+            limit = 20;
+            offset = limit;
+            mediaItemContainer = $('#performers-listing');
+    function fill_li(id, value)
+            {
+                return '<li><input type="checkbox" value="' + id + '" onclick=showValuesvenue();><label class="space">' + value + ' </label> </li>';
+            }        
+    
+    
+    $(window).scroll(function()
+            {
+                
+                 var checked_cities = [];
+                $('#form_filter_cities input:checked').each(function() {
+                    checked_cities.push($(this).val());
+                });
+                var checked_venues = [];
+                $('#form_filter_venues input:checked').each(function() {
+                    checked_venues.push($(this).val());
+                });
+                var checked_performers = [];
+                $('#form_filter_performers input:checked').each(function() {
+                    checked_performers.push($(this).val());
+                });
+                
+                
+                params = "?ajax=1";
+                console.log(offset+'=='+max);
+                 if(offset>max){
+                    $('#hr').show();
+                }
+                //TODO change 50 to events count
+                if ($(window).scrollTop() === $(document).height() - $(window).height() && offset <= max && (checked_cities.length + checked_performers.length + checked_venues.length) === 0) {
+                    params += "&offset=" + offset;
+                    console.log('<?php echo $this->url('www', array()); ?>' + params);
+
+                    $('#loader').show();
+                    $.ajax({
+                        url: '<?php echo $this->url('www', array()); ?>' + params
+                    }).done(function(data) {
+
+                                             
+                        $(mediaItemContainer).append($.parseHTML(data));
+                        $(mediaItemContainer).fadeIn("slow");
+                        $("img.lazy").lazyload({
+    effect : "fadeIn"
+});
+                        $('#loader').hide();
+                        //$(mediaItemContainer).masonry({itemSelector: '.performer-box'});
+                           $(mediaItemContainer).masonry({
+  // options...
+  duration: 'slow',
+  transitionDuration: 0,
+  animationOptions: {
+    
+   
+   
+    easing: 'linear',
+    
+    queue: false
+  }});
+                          
+
+                        $(mediaItemContainer).masonry('reloadItems');
+                        $(mediaItemContainer).masonry('layout');
+
+
+                        $('#form_filter_venues > ul').html('');
+                        venues = [];
+                        venuesid = [];
+
+                        $.each($(mediaItemContainer).find('footer > a'), function(index, value)
+                        {
+                            venues.push($(value).data('venuename'));
+                            venuesid.push($(value).data('venueid'));
+
+                        });
+                      
+
+                        function uniquess(array)
+                        {
+                           var temp=[];
+                            $.each(array, function(index, value)
+                            {
+                                
+                                if ($.inArray(value, temp) === -1)
+                                {
+                                   
+                                    temp.push(value);
+                                }
+                            });
+                            return temp;
+                        }
+
+
+                       
+                        venues = uniquess(venues);
+                        venuesid = uniquess(venuesid);
+                       
+
+                        $.each(venues, function(index, value)
+                        {
+                            $('#form_filter_venues > ul').append(fill_li(venuesid[index], value));
+                        });
+                    });
+                    offset += limit;
+                }
+                max2=220;
+               
+            });
+        </script>
+       
+         <?php echo $this->partial('layout/totopJs.phtml'); ?> 
+         
+        <?php echo $this->partial('layout/partialjs'); ?> 
+
+    </body>
+</html>

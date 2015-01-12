@@ -1,0 +1,140 @@
+<script type="text/javascript">
+
+
+    limit = 20;
+    max = limit * 10;
+    offset = limit;
+    var mediaItemContainer = $('#listing tbody');
+    function fill_li(id, value)
+    {
+        return '<li><input type="checkbox" value="' + id + '"><label>' + value + ' </label> </li>';
+    }
+
+
+    $(window).scroll(function()
+    {
+        params = "?ajax=1";
+        //TODO change 50 to events count
+        if ($(window).scrollTop() === $(document).height() - $(window).height() && offset <= max) {
+            params += "&offset=" + offset;
+            console.log('<?php echo $this->url('www/searchPage', array()); ?>' + params);
+            console.log('<?php echo $search; ?>');
+            $('#loader').show();
+            $.ajax({
+                type: "POST",
+                url: '<?php echo $this->url('www/searchPage', array()); ?>' + params,
+                data: {search: '<?php echo $search; ?>'}
+            })
+                    .done(function(data) {
+                        p = $.parseHTML(data);
+                        $(mediaItemContainer).append(p);
+                        $('#loader').hide();
+                        if (p.length !== 3)
+                        {
+                            $('#form_filter_venues > ul').html('');
+                            $('#form_filter_cities > ul').html('');
+                            $('#form_filter_performers > ul').html('');
+
+                            venues = [];
+                            cities = [];
+                            performers = [];
+                            venuesid = [];
+                            citiesid = [];
+                            performersid = [];
+
+                            $.each($(mediaItemContainer).find(".filtertag"), function(index, value)
+                            {
+                                venues.push($(value).data('venue-name'));
+                                cities.push($(value).data('city-name'));
+                                performers.push($(value).data('performer-name'));
+
+                                venuesid.push($(value).data('venue'));
+                                citiesid.push($(value).data('city'));
+                                performersid.push($(value).data('performer'));
+
+
+                            });
+
+
+                            function uniquess(array)
+                            {
+                                var temp = [];
+                                $.each(array, function(index, value)
+                                {
+
+                                    if ($.inArray(value, temp) === -1)
+                                    {
+
+                                        temp.push(value);
+                                    }
+                                });
+                                return temp;
+                            }
+
+
+
+
+
+
+                            venues = uniquess(venues);
+                            cities = uniquess(cities);
+                            performers = uniquess(performers);
+
+                            venuesid = uniquess(venuesid);
+                            citiesid = uniquess(citiesid);
+                            performersid = uniquess(performersid);
+
+                            $.each(venues, function(index, value)
+                            {
+                                $('#form_filter_venues > ul').append(fill_li(venuesid[index], value));
+                            });
+                            $.each(cities, function(index, value)
+                            {
+                                $('#form_filter_cities > ul').append(fill_li(citiesid[index], value));
+                            });
+                            $.each(performers, function(index, value)
+                            {
+                                $('#form_filter_performers > ul').append(fill_li(performersid[index], value));
+                            });
+                        }
+                    });
+            offset += limit;
+        }
+
+
+    });
+
+
+    function onChange(filter, data_filter)
+    {
+        $('#form_filter_' + filter).on("change", function(e)
+        {
+            var checked = [];
+            $('#form_filter_' + filter + ' input:checked').each(function() {
+                checked.push($(this).val());
+            });
+            console.log(checked);
+            if (checked.length === 0)
+            {
+                $('#listing tr').show();
+            }
+            else
+            {
+                $('#listing tr').hide();
+                $('#tableHead').show();
+                $.each(checked, function(index, value)
+                {
+                    $('#listing tr').filter('[data-' + data_filter + '=' + value + ']').show();
+                });
+            }
+        });
+    }
+
+
+    onChange("performers", "performer");
+    onChange("venues", "venue");
+    onChange("cities", "city");
+
+
+
+</script>

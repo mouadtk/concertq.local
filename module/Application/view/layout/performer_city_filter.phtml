@@ -1,0 +1,27 @@
+<div class="c-filter">
+    <header class="clearfix">
+        <i id ="cities-filter" class="fa fa-minus rht"></i>
+        <h4>Cities</h4>
+    </header>
+    <form id="cities">
+        <div id="search">
+            <input id="cities-search" type="text" placeholder="Search..." size="40" name="q">
+        </div>
+        <ul id="cities-list" style="
+            height: 300px;
+            overflow: scroll;
+            overflow-x: hidden;">
+            <?php
+            foreach ($cities as $event) {
+
+
+                echo '<li class="cities-li">';
+
+                echo '<input type="checkbox" value="' . $event->getVenue()->getCity()->get_id() . '">';
+                echo '<label> ' . $event->getVenue()->getCity()->get_name() . " - " . $event->getVenue()->getCity()->getState()->get_abbreviation() . '</label>';
+                echo '</li>';
+            }
+            ?>
+        </ul>
+    </form>
+</div>

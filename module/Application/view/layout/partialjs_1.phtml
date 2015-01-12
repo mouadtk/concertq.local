@@ -1,0 +1,179 @@
+
+<script>
+
+
+    $(window).load(function() {
+
+        $("#performers-listing").masonry({itemSelector: '.performer-box'});
+
+    });
+
+
+    function isScrolledIntoView(elem)
+    {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+
+        return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+
+
+    function ticketslink(identifier){
+       
+           var domain = /:\/\/([^\/]+)/.exec(window.location.href)[1];
+        domain = domain.replace('www.', '');
+         if($(identifier).data('performerdash') && $(identifier).data('performerid') == "event")
+        {
+            link= 'http://'+domain+'/'+$(identifier).data('citydash')+'.html'+'?eventid='+ $(identifier).data('eventid');
+                   
+            $(identifier).attr("href", link);
+         
+            
+        }
+        
+        else if($(identifier).data('performerdash') && $(identifier).data('performerid') != "event"){
+        link= 'http://'+$(identifier).data('performerdash')+'.'+domain+'/'+$(identifier).data('citydash')+'.html'+'?eventid='+ $(identifier).data('eventid');
+                     
+            $(identifier).attr("href", link);
+      
+         
+    }
+
+       
+   }
+
+   
+
+
+    function showValues() {
+
+        i = 0;
+        var checked_cities = [];
+        $('#form_filter_cities input:checked').each(function() {
+            if (i < 3)
+            {
+                checked_cities.push($(this).val());
+                i = i + 1;
+            }
+        });
+        var checked_venues = [];
+        $('#form_filter_venues input:checked').each(function() {
+            checked_venues.push($(this).val());
+        });
+        var checked_performers = [];
+        $('#form_filter_performers input:checked').each(function() {
+            checked_performers.push($(this).val());
+        });
+        $.ajax({
+            type: "GET",
+            url: "<?php echo $this->url('www', array()); ?>",
+            data: {'cities': checked_cities, 'venues': checked_venues, 'performers': checked_performers}
+        })
+                .done(function(msg) {
+
+                    var p = $.parseHTML(msg);
+
+
+
+
+
+                    $('#performers-listing').html("");
+                    $('#form_filter_venues').html("");
+
+
+
+
+                    if ($(p).find('#performers-listing').children().length === 1)
+                    {
+                        $('#performers-listing').append($(p).find('#performers-listing').children());
+                        $('#form_filter_venues').append('<label> No results </label>');
+                        $('#performers-listing').append('<label> No results </label>');
+                    }
+                    else
+                    {
+                        $('#form_filter_venues').append($(p).find('#form_filter_venues').children());
+
+                        var mediaItemContainer = $('#performers-listing');
+
+                        $(mediaItemContainer).append($(p).find('#performers-listing').children());
+                        $("img.lazy").lazyload({
+    effect : "fadeIn"
+});
+                        $(mediaItemContainer).masonry('reloadItems');
+                        $(mediaItemContainer).masonry('layout');
+
+                     
+                    }
+                    //alert($(msg).find('#form_filter_venues').children().text());
+
+                    //alert(p); 
+                });
+
+    }
+    function showValuesvenue() {
+        i = 0;
+        var checked_cities = [];
+        $('#form_filter_cities input:checked').each(function() {
+            if (i < 3)
+            {
+                checked_cities.push($(this).val());
+                i = i + 1;
+            }
+        });
+        var checked_venues = [];
+        $('#form_filter_venues input:checked').each(function() {
+            checked_venues.push($(this).val());
+        });
+        var checked_performers = [];
+        $('#form_filter_performers input:checked').each(function() {
+            checked_performers.push($(this).val());
+        });
+        $.ajax({
+            type: "GET",
+            url: "<?php echo $this->url('www', array()); ?>",
+            data: {'cities': checked_cities, 'venues': checked_venues, 'performers': checked_performers}
+        })
+                .done(function(msg) {
+
+                    var p = $.parseHTML(msg);
+
+
+                    $('#performers-listing').html("");
+
+                    if ($(p).find('#performers-listing').children().length === 1)
+                    {
+                        $('#performers-listing').append($(p).find('#performers-listing').children());
+                        $('#performers-listing').append('<label> No results </label>');
+
+
+                    }
+                    else
+                    {
+
+
+                        var mediaItemContainer = $('#performers-listing');
+
+                        $(mediaItemContainer).append($(p).find('#performers-listing').children());
+                        $("img.lazy").lazyload({
+    effect : "fadeIn"
+});
+                        $(mediaItemContainer).masonry('reloadItems');
+                        $(mediaItemContainer).masonry('layout');
+
+                        
+                    }
+
+
+                    //alert($(msg).find('#form_filter_venues').children().text());
+
+                    //alert(p); 
+                });
+
+    }
+</script>
+
+

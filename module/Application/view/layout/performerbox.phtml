@@ -1,0 +1,128 @@
+
+
+<?php if ($ajax === 0) { ?>
+
+    <article class="performer-box">
+        <header>                       
+            <center><h1 class="performer-title"><a href="<?php
+                echo $this->url('www', array());
+                ?>">Concert Q</a></h1></center>
+            <h2 class="padding">Score tickets to the best concerts of the year coming to your city.</h2>
+            <h3 class="padding">ConcertQ is your source for the best tickets at the best PRICES. Compare us to  
+                <a rel="nofollow" href="https://www.facebook.com/Stubhub"><img src="<?php echo $this->basePath() . '/img/stubhublogo.jpeg' ?>" height="20" width="20" style="vertical-align:middle"/></a> 
+                <a rel="nofollow" href="https://plus.google.com/+ticketmaster/posts"><img style="vertical-align:middle" src="<?php echo $this->basePath() . '/img/ticketmasterlogo.jpg' ?>" height="20" width="20"/> </a>
+                <a rel="nofollow" href="http://instagram.com/livenation"><img style="vertical-align:middle" src="<?php echo $this->basePath() . '/img/livenationlogo.png' ?>" height="20" width="20"/></a> and SAVE. </h3>
+        </header>
+
+        <section>
+            <h3>Trending </h3><br />
+            <?php
+            $i = 0;
+             foreach ($topperformers as $topperformer) :
+            ?><div itemscope itemtype="http://data-vocabulary.org/Event">
+             <span class="tag"> # <a href="<?php
+            echo $this->url('subdomain', array('subdomain' => $topperformer->get_link_dash()));
+            ?>" itemprop="performer"><?php echo $topperformer->get_name(); ?></a></span> 
+            </div>
+            <?php
+            $i++;
+            if ($i == 10)
+                break;
+            ?>
+        <?php endforeach; ?>
+
+        </section>
+
+
+    </article>
+
+<?php } ?>
+
+
+
+
+
+
+
+
+<?php
+foreach ($venues as $venue) :
+    $event = $venue;
+    ?>
+
+    <article class="performer-box" style="margin-bottom:35px">
+        <header>
+            <a href="<?php
+                echo $this->url('subdomain', array(
+                    'subdomain' => $venue->getHost()->get_link_dash()
+                ));
+                ?>">
+                <img class="lazy" id="img_index" data-original="<?php echo $this->basePath() . '/' . $this->image("" . $venue->getHost()->get_link_dash(), "performer",$venue->getHost()->get_id()); ?>"  alt="<?php echo $venue->getHost()->get_name(); ?>" title="<?php echo $venue->getHost()->get_name(); ?>">
+                <i class="fa fa-eject"></i>
+            </a>
+
+            <h2 class="performer-title"><a href="<?php
+                echo $this->url('subdomain', array(
+                    'subdomain' => $venue->getHost()->get_link_dash()
+                ));
+                ?>" title ="<?php echo $venue->getHost()->get_name(); ?>"><?php echo $this->escapeHtml($venue->get_name()); ?></a></h2>
+
+
+        </header>
+
+        <section>
+            <abbr class="date"><strong><?php echo $venue->get_date()->format("M d"); ?></strong>, <?php echo $venue->get_date()->format("Y"); ?> <?php echo $venue->get_time()->format("h:i A"); ?></abbr>
+            <span class="location"><strong><?php echo $this->escapeHtml($venue->getVenue()->get_name()); ?></strong>,<?php echo $venue->getVenue()->getCity()->get_name(); ?>, <?php echo $this->escapeHtml($venue->getVenue()->getCity()->getState()->get_abbreviation()); ?></span>
+
+            <?php
+                $content = "";
+                try {
+                    if (array_key_exists($event->getHost()->get_link_dash(), Application\Plugins\RealContent::$performerContent)) {
+                        echo '<p>';
+                        $content = Application\Plugins\RealContent::$performerContent[$event->getHost()->get_link_dash()];
+                    } else {
+                        echo '<p>';
+                        $content = $this->generateContent($event->getHost()->get_link_dash() . '_tmp');
+                    }
+                } catch (\Exception $ex) {
+                    $content = $this->partial('layout/performer_generatedContent.phtml', array(
+                        'file' => $ex->getMessage(),
+                        'performer' => $event->getHost(),
+                        'event' => $event,
+                        'allEvents' => array(),
+                        'relatedPerformers' => array(),
+                        'temp' => true));
+                }
+                //get the first 400 letters
+                $content = substr($content, 0, 120);
+                $content.=' ...';
+                echo $content.'</p>';
+                ?>
+        </section>
+        <?php
+//        //to change to : javascript:void(0)
+//        //replace 'new-york' with 'newYork'
+//        $cityConcat = preg_replace_callback(
+//                '/-([a-z])/', function ($matches) {
+//            return strtoupper($matches[1]);
+//        }, $event->getVenue()->getCity()->get_link_dash()
+//        );
+        ?>
+        <footer><a href="<?php
+            $cityConcat = preg_replace_callback(
+                    '/-([a-z])/', function ($matches) {
+                return $matches[1];
+            }, $event->getVenue()->getCity()->get_link_dash()
+            );
+            echo $this->url('subdomain/ticketPage', array(
+                'action' => 'ticket',
+                'subdomain' => $event->getHost()->get_link_dash(),
+                'city' => $cityConcat,
+                'venue' => $event->getVenue()->get_link_dash()));
+            ?>" onclick="ticketslink(this);return true;" title="<?php echo $venue->getHost()->get_name().' '.$event->getVenue()->get_name(); ?>" data-eventid="<?php echo $this->escapeHtml($venue->get_id()); ?>" data-citydash="<?php echo $cityConcat . "-" . $event->getVenue()->get_link_dash(); ?>" data-performerdash="<?php echo $this->escapeHtml($venue->getHost()->get_link_dash()); ?>" data-performerid="<?php echo $this->escapeHtml($venue->getHost()->get_id()); ?>"data-venuename="<?php echo $this->escapeHtml($venue->getVenue()->get_name()); ?>" data-venueid="<?php echo $this->escapeHtml($venue->getVenue()->get_id()); ?>"  class="c-button see-tickets-index myTicketLink">See Tickets<i class="fa fa-angle-right"></i></a></footer>
+    </article>
+
+
+<?php endforeach; ?>
+
+

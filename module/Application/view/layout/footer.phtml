@@ -1,0 +1,41 @@
+<footer>
+    <!-- Scripts -->
+    <?php
+    echo $this->headScript()
+            //->prependFile($this->basePath() . '/js/script_filter_ajax.js')
+            ->prependFile($this->basePath() . '/js/concertq.js')
+            ->prependFile($this->basePath() . '/js/mailcheck.min.js')
+            ->prependFile($this->basePath() . '/js/lazyload.js')
+            ->prependFile($this->basePath() . '/js/jquery.masonry.min.js')
+            ->prependFile($this->basePath() . 'http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js')
+            //  ->prependFile($this->basePath() . '/js/isotope.min.js')
+            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.jscroll.min.js')
+            ->prependFile($this->basePath() . '/js/jquery.min.js')
+            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+            ->prependFile($this->basePath() . '/js/html5shiv.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+
+    ;
+    ?>
+
+    <script type="text/javascript">
+
+
+        
+
+        $('#send-search').click(function(e)
+        {
+            $("#searchForm").submit();
+//            $(location).attr('href', "<?php echo $this->url('www/searchPage', array()); ?>" +
+//                    '?search=' + $("#search").val());
+        });
+
+        $("#search").keypress(function(e) {
+            if (e.which === 13) {
+                $('#send-search').click();
+            }
+        });
+
+
+    </script>
+</footer>

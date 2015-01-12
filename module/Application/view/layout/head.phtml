@@ -1,0 +1,69 @@
+<head>
+    <meta charset="utf-8">
+
+    <?php
+    //****************************
+error_reporting(E_ALL & ~E_NOTICE);
+
+    echo $this->headTitle($MetaEvent['title']);
+
+    function appendName($meta, $MetaEvent, $renderer) {
+        if (array_key_exists($meta, $MetaEvent)) {
+            $renderer->headMeta()
+                    ->appendName($meta, $MetaEvent[$meta]);
+        }
+    }
+    
+    
+    unset($MetaEvent['title']);
+    foreach ($MetaEvent as $key => $value) {
+        appendName($key, $MetaEvent, $this);
+    }
+    //
+    
+      foreach ($OGmetas as $key => $value) {
+        $this->headMeta()
+                    ->setProperty($key, $value);
+    }
+    
+    //
+    echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge');
+
+    //****************
+    ?>
+
+    <?php
+    echo $this->headLink(
+                    array('rel' => 'shortcut icon',
+                        'type' => 'image/vnd.microsoft.icon',
+                        'href' => $this->basePath() . '/img/logo-bold.png'
+            ))
+            ->prependStylesheet($this->basePath() . '/css/dest/concertq.css')
+//            ->prependStylesheet($this->basePath() . '/css/style.css')
+            ->prependStylesheet('http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+    ?>
+
+    <!-- Les styles -->
+    <?php
+// echo $this->partial('layout/head_css.phtml', array('meta_keywords', $this->meta_keywords));
+//    echo $this->prependStylesheet($this->basePath() . '/css/dest/concertq.min.css')
+//            ->prependStylesheet('http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');
+//              
+    ?>
+
+
+<?php
+
+$link ="http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+if (strpos($link,'eventid') !== false) {
+ $pieces = explode("?", $link);
+ 
+ echo '<link rel="canonical" href="'.$pieces[0].'"/>';
+}
+
+
+?>
+
+</head>

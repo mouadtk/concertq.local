@@ -1,0 +1,228 @@
+$light-grey : #7a7a7a;
+$color : #d0101c;
+$black : #110808;
+$green : #87a844;
+$grey : #555;
+$w : #fff;
+
+$img-path : '../../images';
+
+$basic-font : 'Helvetica Neue', Arial, Helvetica, sans-serif;
+$web-font : 'Roboto Condensed', Arial, Helvetica, Sans-serif;
+
+
+@function pxem($px, $context: 13px)
+{
+    @return ($px / $context) * 1em;
+}
+
+
+@mixin default
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+
+@mixin radius($value) {
+	-webkit-border-radius: $value;
+	-moz-border-radius: $value;
+	-ms-border-radius: $value;
+	border-radius: $value;
+}
+
+
+@mixin shadow($value)
+{
+    -webkit-box-shadow:$value;
+    -moz-box-shadow:$value;
+    box-shadow:$value;
+}
+
+
+@mixin clearfix() {
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+@mixin cleartext() {
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    font-size: 0;
+    text-align: start;
+}
+
+
+@mixin boxsizing() {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+@mixin absolute($left:auto, $right:auto, $top:auto, $bottom:auto, $z: null)
+{
+    @if $left != null {
+        left: $left
+    }
+    @if $right != null {
+        right: $right;
+    }
+    @if $top != null {
+        top: $top;
+    }
+    @if $bottom != null {
+        bottom: $bottom;
+    }
+    position: absolute;
+    @if $z != null {
+        z-index: $z;
+    }
+}
+
+@mixin fixed($left:auto, $right:auto, $top:auto, $bottom:auto, $z: null)
+{
+    @if $left != null {
+        left: $left
+    }
+    @if $right != null {
+        right: $right;
+    }
+    @if $top != null {
+        top: $top;
+    }
+    @if $bottom != null {
+        bottom: $bottom;
+    }
+    position: fixed;
+    @if $z != null {
+        z-index: $z;
+    }
+}
+
+
+
+@mixin relative($left:auto, $top:auto, $z: 0)
+{
+    @if $left != null {
+        left: $left
+    }
+    @if $top != null {
+        top: $top;
+    }
+    position: relative;
+    @if $z != null {
+        z-index: $z;
+    }
+    
+}
+
+
+@mixin wh($width:auto, $height:auto)
+{
+    height: $height;
+    width: $width;
+}
+
+
+@mixin opacity($opacity, $bgcolor)
+{
+    @if $bgcolor != null {
+        background-color: $bgcolor;
+    }
+    
+    opacity: $opacity;
+    filter:alpha(opacity=$opacity * 100);
+}
+
+
+@mixin ellipsis($width)
+{
+    display: inline-block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: $width;
+    white-space: nowrap;
+}
+
+
+@mixin absoluteCenter($width) {
+    @include absolute(50%,null,null,null,1);
+    margin-left: #{($width / 2) * -1}px;
+    width: #{$width}px;
+}
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+
+  @-moz-keyframes $animation-name {
+    @content;
+  }  
+
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+
+  @-o-keyframes $animation-name {
+    @content;
+  }
+
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($value) {
+  -webkit-animation: #{$value};
+  -moz-animation: #{$value};
+  -ms-animation: #{$value};
+  -o-animation: #{$value};
+  animation: #{$value};      
+}
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
+@mixin transform($params) {
+    -webkit-transform: $params;
+    -moz-transform: $params;
+    -ms-transform: $params;
+    transform: $params;
+}
+
+@mixin break1500 {
+    @media only screen and (min-width: 1500px) {
+        @content;
+    }
+}
+
+@mixin break1280 {
+  @media only screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+@mixin break1024 {
+    @media only screen and (min-width: 1024px) {
+        @content;
+    }
+}
